@@ -1,0 +1,31 @@
+// blog-list
+// blog-list-item
+
+html.flexbox.flexwrap {
+	.blog-list {
+		@include display(flex);
+		@include flex-wrap(wrap);
+		@include align-items(center);
+	}
+
+	.blog-list-item {
+		@include flex(1 1 17em);
+		@include padding(1.5em);
+		box-sizing: border-box;
+
+		&.internal { @include flex(1 1 27em); }
+	}
+
+	.blog-excerpt {
+		@include clearfix();
+	}
+}
+
+
+
+html.no-flexbox, html.flexbox.no-flexwrap {
+	.blog-list-item { 
+		width: 100%; 
+		@include padding(2em 1.5em);
+	}
+}

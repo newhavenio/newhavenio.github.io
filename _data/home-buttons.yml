@@ -1,0 +1,19 @@
+- name: newhavenio
+  link: http://www.twitter.com/newhavenio
+  icon:	twitter
+
+- name: Google Group
+  link: http://groups.google.com/forum/?fromgroups#!forum/newhavenio
+  icon:	envelope
+
+- name: Meetup.com
+  link: http://www.meetup.com/newhavenio/
+  icon:	calendar-o
+
+- name: Contribute
+  link: https://secure.meetup.com/newhavenio/contribute/
+  icon:	usd
+
+- name: Contribute
+  link: bitcoin:1NDhTt48EQJDQj6Eiz9iwCQ2K62WsZZY8B
+  icon:	bitcoin

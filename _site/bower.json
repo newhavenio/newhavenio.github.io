@@ -1,0 +1,18 @@
+{
+  "name": "Maxwell Jekyll",
+  "version": "2.0.0",
+  "authors": [
+    "maxx1128 <maxx1128@gmail.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap-sass": "~3.3.6"
+  },
+  "devDependencies": {
+    "bourbon": "~4.2.4",
+    "susy": "~2.2.9"
+  }
+}
