@@ -1,0 +1,39 @@
+#developers nav {
+	width: 100%;
+	@include clearfix;
+}
+
+html.flexbox.flexwrap {
+
+	#developers {
+		@include display(flex);
+		@include flex-wrap(wrap);
+	}
+
+	.developer-card {
+		@include flex(1 1 30em);
+		@include margin(null .5em);
+	}
+}
+
+html.no-flexbox, html.flexbox.no-flexwrap {
+
+	#developers {
+		width: 100%;
+	}
+
+	.developer-card {
+		@include span(12);
+
+		@include susy-breakpoint($screen-md) {
+			@include span(6);
+
+			height: 35em;
+			overflow: scroll;
+		}
+	}
+
+
+
+
+}

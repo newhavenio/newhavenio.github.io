@@ -1,0 +1,11 @@
+- name: About
+  link: '/about/'
+
+- name: Blog
+  link: '/blog/'
+
+- name: Developers
+  link: '/developers/'
+
+- name: Contact
+  link: 'http://groups.google.com/forum/?fromgroups#!forum/newhavenio'
