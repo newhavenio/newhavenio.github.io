@@ -20,6 +20,10 @@
 	button {
 		@include margin(.3em);
 		@include padding(5px);
+		background-color: #4A4D50;
+		a {
+			color: #FFF;
+		}
 
 		i {
 			padding: em(2px);
