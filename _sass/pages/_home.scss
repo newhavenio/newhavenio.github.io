@@ -17,12 +17,12 @@
 .masthead-buttons {
 	padding-top: 1em;
 
-	button { 
-		@include margin(.3em); 
+	button {
+		@include margin(.3em);
 		@include padding(5px);
 
-		i { 
-			padding: em(2px); 
+		i {
+			padding: em(2px);
 			float: left;
 		}
 	}
@@ -50,7 +50,7 @@ html.flexbox.flexwrap {
 		@include flex-wrap(wrap);
 		@include justify-content(space-around);
 
-		button { @include flex(0 1 9em); }	
+		button { @include flex(0 1 9em); }
 	}
 }
 
