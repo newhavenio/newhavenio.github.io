@@ -5,28 +5,7 @@ container: false
 
 <div class="home">
 
-<div id="masthead">
-    <div class="masthead-copy container-fluid">
-        <h2 class="masthead-title">Welcome to {{ site.title }}</h2>
-
-        <h4 class="masthead-description">NewHaven.io is a nonprofit 501(c)(6) developer group in New Haven, CT. If you’re interested in programming, the intertubes, and whatnot, this is the group for you.</h4>
-
-        <div class="masthead-buttons">
-            {% for button in site.data.home-buttons %}
-                <button type="button" class="btn btn-default">
-                    <a href="{{ button.link }}" target="_blank">
-                        <i class="fa fa-{{ button.icon }}"></i>
-                        {{ button.name }}
-                    </a>
-                </button>
-            {% endfor %}
-        </div>
-
-        <div class="masthead-slack">
-            <iframe src="https://newhavenio-slackin.herokuapp.com/iframe" class="__slackin" style="border-width: 0px; width: 108px; height: 20px; visibility: visible;"></iframe>
-        </div>
-    </div>
-</div>
+{% include masthead.html %}
 
 <section id="meetup-events" class="container-fluid">
     <!-- Generating events below -->
