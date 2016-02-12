@@ -11,7 +11,7 @@ html.flexbox.flexwrap {
 	}
 
 	.developer-card {
-		@include flex(1 1 30em);
+		@include flex(1 1 28em);
 		@include margin(null .5em);
 	}
 }

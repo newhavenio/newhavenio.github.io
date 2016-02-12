@@ -10,9 +10,21 @@ $susy: (
 
 .container-fluid {
 	max-width: $max-width !important;
-	@include padding(null 5%);
+	@include padding(null 2%);
 
 	@include susy-breakpoint($screen-md) {
 		@include padding(null 7.5%);
+	}
+
+	&.page-content {
+		@include padding(null 0);
+
+		@include susy-breakpoint($screen-sm) {
+			@include padding(null 2.5%);
+		}
+
+		@include susy-breakpoint($screen-md) {
+			@include padding(null 5%);
+		}
 	}
 }

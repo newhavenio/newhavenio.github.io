@@ -1,6 +1,14 @@
 // Adds extra padding to the right menu so it doesn't overlap with the "Fork Me" ribbon on medium screens
+.navbar {
+	@include susy-breakpoint($screen-sm) {
+		margin-bottom: 20px;
+	}
+}
+
 .navbar-right {
-	@include susy-breakpoint($screen-sm) { padding-right: 6em; }
+	@include susy-breakpoint($screen-sm) { padding-right: 7em; }
+
+	@include susy-breakpoint($screen-md) { padding-right: 4em; }
 
 	@include susy-breakpoint($screen-lg) { padding-right: 0; }
 }
@@ -8,11 +16,12 @@
 // Puts the "Fork Me" ribbon below the navbar on mobile screens
 .header-ribbon {
 	img {
-		@include position(absolute, 52px 0 null null);
+		display: none;
 
 		@include susy-breakpoint($screen-sm) {
-			top: 0;
-			z-index: 9999; // Ribbon is over the menu on larger screens, but not over the mobile dropdown
+			@include position(absolute, 0 0 null null);
+			display: block;
+			z-index: 9999;
 		}
 	}
 }
