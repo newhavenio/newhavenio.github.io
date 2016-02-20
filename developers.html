@@ -12,9 +12,8 @@ container: false
 
 	{% raw  %}
 	<script id="developer-card" type="x-tmpl-mustache">
-	    <div class="developer-card panel panel-default --small">
+	    <div class="developer-card panel panel-default">
           <div class="panel-heading">
-          	  <span class="dev-card-trigger glyphicon glyphicon-plus"></span>
               <header><h2>
                   <a href="{{developer.link}}" target="_blank">{{developer.name}}</a>
               </header></h2>
@@ -75,7 +74,7 @@ container: false
 	        var getPaginatorLinks = function(results) {
 	          var current_page = document.location.search.match(/page=(\d+)/);
 	          current_page = current_page == null ? 1 : parseInt(current_page[1]);
-	          var per_page = 100;
+	          var per_page = 40;
 	          var pages = Math.ceil(results / per_page);
 	          var links = [];
 	          var prev_url = current_page != 1 ? '?page=' + (current_page - 1): '';

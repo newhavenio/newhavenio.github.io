@@ -2,8 +2,6 @@
 	@include clearfix;
 	@include padding(1em 1em 2em 1em);
 	margin: 0 auto;
-	max-width: 100%;
-	height: auto;
 
 	img {
 		margin: 0 auto;
@@ -14,30 +12,4 @@
 		float: left;
 		margin: 0;
 	}
-}
-
-.developer-card {
-
-	&.--small { // Class for a dev container that's been minimized
-
-		&.panel {
-			@include padding(0 1.5% 0.5em 1.5%);
-		}
-
-		.panel-body {
-			height: 0;
-			overflow: hidden;
-			padding: 0;
-		}
-
-		.panel-heading {
-			border-bottom: 0px solid white;
-		}	
-	}
-
-	&:hover {
-		box-shadow: 0px 0px 10px gray;
-	}
-
-	
 }

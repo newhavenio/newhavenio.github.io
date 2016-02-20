@@ -1,12 +1,6 @@
 #developers nav {
 	width: 100%;
 	@include clearfix;
-
-	.pagination {
-		display: block;
-		margin: 0 auto 2em auto;
-		max-width: 24em;
-	}
 }
 
 html.flexbox.flexwrap {
@@ -14,27 +8,11 @@ html.flexbox.flexwrap {
 	#developers {
 		@include display(flex);
 		@include flex-wrap(wrap);
-		@include justify-content(center);
 	}
 
 	.developer-card {
-
+		@include flex(1 1 28em);
 		@include margin(null .5em);
-		@include flex(1 1 100%);
-		@include transition(.5s);
-
-		.glyphicon {
-			float: right;
-			margin-top: 13px;
-
-			font-size: 3.5em;
-			cursor: pointer;
-		}
-
-		&.--small {
-			@include flex(1 1 0);
-			@include transition(.5s);
-		}
 	}
 }
 
