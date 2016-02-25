@@ -1,5 +1,9 @@
 .post-header { text-align: center; }
 
+article.post {
+	@include padding(0.75em 5%);
+}
+
 blockquote {
 	font-style: italic;
 

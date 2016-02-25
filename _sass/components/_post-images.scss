@@ -16,6 +16,11 @@
 
 	text-align: center;
 
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
 	@include susy-breakpoint($screen-md) {
 		max-width: 75%;
 
