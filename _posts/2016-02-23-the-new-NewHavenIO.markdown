@@ -9,7 +9,9 @@ source: internal
 ext-url: none
 ---
 
-On behalf of all the other NewHaven.IO developers, I welcome you to the new NewHaven.IO website. It was decided late last year to revamp the site, and at last the work is done. This post is a brief look at the big changes we've made, and how they'll make it easy for members to contribute to the site.
+On behalf of all the other NewHaven.IO developers, I welcome you to the new NewHaven.IO website. So at [a meetup last last year,](http://www.meetup.com/newhavenio/events/225516517/) we decided to revamp the site. After much discussion in person and over our Slack group, the work is finally done.
+
+This post is a brief look at the big changes we've made, and how they'll make it easy for members to contribute to the site. Our big changes were partly inspired by [TechCorrider.IO](http://techcorridor.io/), who transformed their site similarly before our own.
 
 ### Jekyll for Better Collaboration
 
@@ -25,9 +27,9 @@ Now it's easier for members, old and new, to add to the NewHaven.IO site if they
 
 ### From Gumby to Bootstrap
 
-The previous site was built on Gumby, a responsive web framework by the great folks at Digital Surgeons. It was sadly retired, so late last year it was decided to port it to Bootstrap.
+The previous site was built on Gumby, a responsive web framework by the great folks at Digital Surgeons. It was sadly retired, so we ported it over to Bootstrap.
 
-Bootstrap is a clear choice to me since it's one of, if not the, most popular and effective web frameworks out there. For a site where lots of different developers with different focuses working on it, using a well-known framework like Bootstrap makes maintenance (and new ideas) easy and straightfoward to add to the site's repo.
+Bootstrap was a clear choice to us since it's one of, if not the, most popular and effective web frameworks out there. For a site where lots of different developers with different focuses working on it, using a well-known framework like Bootstrap makes maintenance (and new ideas) easy and straightfoward to add to the site's repo.
 
 ### In Conclusion
 

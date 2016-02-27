@@ -9,3 +9,7 @@ a, a:visited, a:hover, a:active, a:focus {
 a:hover, a:active, a:focus {
   text-decoration: underline;
 }
+
+* {
+	word-wrap: break-word;
+}

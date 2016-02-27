@@ -28,5 +28,11 @@
   <script src="{{ "/js/meetup.js" | prepend: site.baseurl }}"></script>
   <script src="{{ "/js/mustache.min.js" | prepend: site.baseurl }}"></script>
   <script src="{{ "/js/modernizr.min.js" | prepend: site.baseurl }}"></script>
+  <script>
+    // Makes all blog links open in a new tab
+    $('article.post a').each(function() {
+      $(this).attr('target', '_blank');
+    });
+  </script>
 
 </footer>
