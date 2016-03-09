@@ -15,7 +15,7 @@ This post is a brief look at the big changes we've made, and how they'll make it
 
 ### Jekyll for Better Collaboration
 
-Our site's old database was built on MongoDB, a powerful MySQL database known for speed and ease of setup. But while MondoDB is great, it was ultimtely decided to move to Jekyll.
+Our old site was built on MongoDB, a powerful NoSQL database known for speed and ease of setup. But while MongoDB is great, it was ultimtely decided to move to Jekyll.
 
 {% include image.html place="post-half-image right" url="/img/posts/welcome_newhavenio/jekyll-logo.png"%}
 
