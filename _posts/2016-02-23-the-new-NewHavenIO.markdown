@@ -27,7 +27,7 @@ Now it's easier for members, old and new, to add to the NewHaven.IO site if they
 
 ### From Gumby to Bootstrap
 
-The previous site was built on Gumby, a responsive web framework by the great folks at Digital Surgeons. It was sadly retired, so we ported it over to Bootstrap.
+The previous site was built on Gumby, a responsive web framework by the great folks at Digital Surgeons. It was sadly retired, so we had to switch to Bootstrap.
 
 Bootstrap was a clear choice to us since it's one of, if not the, most popular and effective web frameworks out there. For a site where lots of different developers with different focuses working on it, using a well-known framework like Bootstrap makes maintenance (and new ideas) easy and straightfoward to add to the site's repo.
 
