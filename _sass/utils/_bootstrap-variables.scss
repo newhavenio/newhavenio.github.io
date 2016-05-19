@@ -7,7 +7,7 @@ $bootstrap-sass-asset-helper: false !default;
 //
 //## Gray and brand colors for use across Bootstrap.
 
-$main-orange:			 #ff7b1a;
+$main-orange:			       #ff7b1a;
 $orange-darker:          darken($main-orange, 15%);
 $orange-dark:          	 darken($main-orange, 30%);
 $orange-lighter:         lighten($main-orange, 15%);
@@ -71,7 +71,7 @@ $line-height-base:        1.75;
 $line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~20px
 
 //** By default, this inherits from the `<body>`.
-$headings-font-family:    "Kanit", Helvetica, Arial, sans-serif;
+$headings-font-family:    "Montserrat", Helvetica, Arial, sans-serif;
 $headings-font-weight:    500 !default;
 $headings-line-height:    1.1 !default;
 $headings-color:          inherit !default;
