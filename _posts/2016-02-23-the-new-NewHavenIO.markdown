@@ -15,7 +15,7 @@ This post is a brief look at the big changes we've made, and how they'll make it
 
 ### Jekyll for Better Collaboration
 
-Our old site was built on MongoDB, a powerful NoSQL database known for speed and ease of setup. But while MongoDB is great, it was ultimtely decided to move to Jekyll.
+Our old site was built on MongoDB, a powerful NoSQL database known for speed and ease of setup. But while MongoDB is great, it was ultimately decided to move to Jekyll.
 
 {% include image.html place="post-half-image right" url="/img/posts/welcome_newhavenio/jekyll-logo.png"%}
 
@@ -29,7 +29,7 @@ Now it's easier for members, old and new, to add to the NewHaven.IO site if they
 
 The previous site was built on Gumby, a responsive web framework by the great folks at Digital Surgeons. It was sadly retired, so we had to switch to Bootstrap.
 
-Bootstrap was a clear choice to us since it's one of, if not the, most popular and effective web frameworks out there. For a site where lots of different developers with different focuses working on it, using a well-known framework like Bootstrap makes maintenance (and new ideas) easy and straightfoward to add to the site's repo.
+Bootstrap was a clear choice to us since it's one of, if not the, most popular and effective web frameworks out there. For a site where lots of different developers with different focuses working on it, using a well-known framework like Bootstrap makes maintenance (and new ideas) easy and straightforward to add to the site's repo.
 
 ### In Conclusion
 
