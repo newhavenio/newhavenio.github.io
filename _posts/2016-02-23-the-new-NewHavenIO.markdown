@@ -11,7 +11,7 @@ ext-url: none
 
 On behalf of all the other NewHaven.IO developers, I welcome you to the new NewHaven.IO website. So at [a meetup last last year,](http://www.meetup.com/newhavenio/events/225516517/) we decided to revamp the site. After much discussion in person and over our Slack group, the work is finally done.
 
-This post is a brief look at the big changes we've made, and how they'll make it easy for members to contribute to the site. Our big changes were partly inspired by [TechCorrider.IO](http://techcorridor.io/), who transformed their site similarly before our own.
+This post is a brief look at the big changes we've made, and how they'll make it easy for members to contribute to the site. Our big changes were partly inspired by [TechCorridor.IO](http://techcorridor.io/), who transformed their site similarly before our own.
 
 ### Jekyll for Better Collaboration
 
