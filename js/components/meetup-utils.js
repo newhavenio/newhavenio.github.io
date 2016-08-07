@@ -83,6 +83,20 @@
       });
   };
 
+  exports.developersUrl = function developersUrl(params) {
+    /* jshint camelcase: false */
+    return 'https://api.meetup.com/2/members?' +
+      exports.parameterize({
+        key: params.key,
+        group_urlname: params.group_urlname,
+        sign: true,
+        'photo-host': 'public',
+        order: 'name',
+        page: params.page || 40,
+        offset: params.offset || 0
+      });
+  };
+
   exports.formatDate = function formatDate(date) {
     /* jshint maxlen: false */
     return Mustache.render(
