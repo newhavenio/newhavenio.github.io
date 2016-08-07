@@ -11,6 +11,7 @@
   <!-- Dependencies -->
   <script src="../webcomponents.min.js"></script>
   <script src="../mustache.min.js"></script>
+  <script src="../components/meetup-utils.js"></script>
 
   <!-- Test Harness -->
   <script src="https://cdn.rawgit.com/chaijs/chai/3.5.0/chai.js"></script>
@@ -19,8 +20,10 @@
   <script>mocha.setup('bdd');</script>
 
   <!-- Test Subjects -->
+  <link rel="import" href="../components/meetup-event-card.html">
 
   <!-- Test Suite -->
+  <script src="meetup-event-card-test.js"></script>
 
   <!-- Test Runner -->
   <script>
