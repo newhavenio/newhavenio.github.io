@@ -66,6 +66,23 @@
       });
   };
 
+  exports.eventsUrl = function eventsUrl(params) {
+    /* jshint camelcase: false */
+    return 'https://api.meetup.com/2/events?' +
+      exports.parameterize({
+        key: params.key,
+        group_urlname: params.group_urlname,
+        sign: true,
+        offset: params.offset || 0,
+        format: 'json',
+        limited_events: 'False',
+        page: params.page || 200,
+        order: 'time',
+        desc: false,
+        status: 'upcoming'
+      });
+  };
+
   exports.formatDate = function formatDate(date) {
     /* jshint maxlen: false */
     return Mustache.render(
@@ -81,4 +98,50 @@
       }
     );
   };
+
+  exports.fetchData = function fetchData(url, resolve, reject) {
+    var timeout, script, insertEl;
+    var elementId = '_' + floor(10000 * random()).toString(16);
+    var callbackName = 'jsonp_callback_' + elementId;
+
+    function cleanup() {
+      delete global[callbackName];
+      var el = document.getElementById(elementId);
+      el.parentNode.removeChild(el);
+    }
+
+    global[callbackName] = function jsonpCallback(data) {
+      global.clearTimeout(timeout);
+      cleanup();
+      resolve(data);
+    };
+
+    timeout = global.setTimeout(function jsonpTimeout() {
+      cleanup();
+      reject(new Error('JSONP timeout'));
+    }, 5000);
+
+    script = document.createElement('script');
+    script.src = url + (url.indexOf('?') === -1 ? '?' : '&') +
+      'callback=' + callbackName;
+    script.id = elementId;
+    script.type = 'text/javascript';
+    script.async = true;
+
+    insertEl = document.getElementsByTagName('head')[0] ||
+      document.body || document.documentElement;
+    insertEl.appendChild(script);
+  };
+
+  exports.triggerEvent = function triggerEvent(eventName, payload) {
+    var event;
+    if (typeof global.CustomEvent === 'function') {
+      event = new CustomEvent(eventName, {detail: payload});
+    } else {
+      event = document.createEvent('CustomEvent');
+      event.initCustomEvent(eventName, true, true, payload);
+    }
+    this.dispatchEvent(event);
+  };
+
 }(window.Meetup = {}, window, document));
