@@ -11,13 +11,13 @@
       <div class="dev-photo">
         {{#photo.photo_link}}
         <figure>
-          <img src="{{photo.photo_link}}" alt="{{name}} picture">
+          <img src="{{photo.photo_link}}" width="200" alt="{{name}} picture">
         </figure>
         {{/photo.photo_link}}
         {{^photo.photo_link}}
         <figure>
-          <img class="missing-photo" src="/img/picture_not_found.png">
-          <figcaption>&copy;CC-BY-SA <a href="http://simon.waldherr.eu/">S. Waldherr</a></figcaption>
+          <img class="missing-photo" width="200" height="200" src="/img/picture_not_found.png">
+          <figcaption>Picture unavailable</figcaption>
         </figure>
         {{/photo.photo_link}}
       </div>
