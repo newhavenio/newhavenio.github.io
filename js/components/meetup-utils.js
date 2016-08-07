@@ -158,4 +158,20 @@
     this.dispatchEvent(event);
   };
 
+  exports.maybe = function maybe(value) {
+    return {
+      value: value,
+      isNone: function () {
+        return value == null;
+      },
+      get: function (lookup) {
+        if (lookup == null || lookup === '' || this.isNone()) {
+          return this;
+        }
+        var props = String(lookup).split('.');
+        return maybe(value[props.shift()]).get(props.join('.'));
+      }
+    };
+  };
+
 }(window.Meetup = {}, window, document));
