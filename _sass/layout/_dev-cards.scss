@@ -1,28 +1,32 @@
-#developers nav {
+meetup-paginator {
 	width: 100%;
 	@include clearfix;
 }
 
+meetup-developers .alert {
+	width: 100%;
+}
+
 html.flexbox.flexwrap {
 
-	#developers {
+	meetup-developers {
 		@include display(flex);
 		@include flex-wrap(wrap);
 	}
 
-	.developer-card {
-		@include flex(1 1 28em);
+	meetup-developer-card {
+		@include flex(1 1 26em);
 		@include margin(null .5em);
 	}
 }
 
 html.no-flexbox, html.flexbox.no-flexwrap {
 
-	#developers {
+	meetup-developers {
 		width: 100%;
 	}
 
-	.developer-card {
+	meetup-developer-card {
 		@include span(12);
 
 		@include susy-breakpoint($screen-md) {
@@ -32,8 +36,4 @@ html.no-flexbox, html.flexbox.no-flexwrap {
 			overflow: scroll;
 		}
 	}
-
-
-
-
 }

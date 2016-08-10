@@ -4,129 +4,45 @@ title: Developers
 container: false
 ---
 
-<div class="developers-page">
+<link rel="import" href="{{ "/js/components/meetup-paginator.html" | prepend: site.baseurl }}">
+<link rel="import" href="{{ "/js/components/meetup-developers.html" | prepend: site.baseurl }}">
+<link rel="import" href="{{ "/js/components/meetup-developer-card.html" | prepend: site.baseurl }}">
 
-	<div id="developers">
-	    <!-- Generating events below -->
-	</div>
+<div id="foo" class="developers-page">
+    <meetup-paginator
+        id="developers-paginator"
+        per-page="40">
+    </meetup-paginator>
 
-	{% raw  %}
-	<script id="developer-card" type="x-tmpl-mustache">
-	    <div class="developer-card panel panel-default">
-          <div class="panel-heading">
-              <header><h2>
-                  <a href="{{developer.link}}" target="_blank">{{developer.name}}</a>
-              </header></h2>
-          </div>
-          <div class="panel-body">
-              <div class="">
-                  <div class="dev-photo">
-                      {{#developer.photo.photo_link}}
-                      <img src="{{developer.photo.photo_link}}" alt="{{developer.name}} picture" />
-                      {{/developer.photo.photo_link}}
-                      {{^developer.photo.photo_link}}
-                      <figure>
-                        <img src="img/picture_not_found.png" />
-                        <figcaption>&copy;CC-BY-SA <a href="http://simon.waldherr.eu/">S. Waldherr</a></figcaption>
-                      </figure>
-                      {{/developer.photo.photo_link}}
-                  </div>
-              </div>
-                {{#developer.data}}
-                  {{#value}}
-                  <div class="{{field}}">
-                    <header><h3>{{field}}:</h3></header>
-                    {{{ value }}}
-                  </div>
-                  {{/value}}
-                {{/developer.data}}
-          </div>
-	    </div>
-	</script>
-
-	<script id="developer-paginator" type="x-tmpl-mustache">
-	<nav class="developer-nav">
-	  <ul class="pagination">
-	    {{#links}}
-	      {{#url}}
-	        <li>
-	          <a href="{{url}}">
-	            <span aria-hidden="true">{{{label}}}</span>
-	          </a>
-	        </li>
-	      {{/url}}
-	      {{^url}}
-	        <li class="disabled">
-	          <span aria-hidden="true">{{{label}}}</span>
-	        </li>
-	      {{/url}}
-	    {{/links}}
-	  </ul>
-	</nav>
-	</script>
-
-	{% endraw  %}
-
-	<script type="text/javascript">
-	    //assume Mustache is loaded
-	    //assume Meetup is loaded
-	    window.onload = function(){
-	        var getPaginatorLinks = function(results) {
-	          var current_page = document.location.search.match(/page=(\d+)/);
-	          current_page = current_page == null ? 1 : parseInt(current_page[1]);
-	          var per_page = 40;
-	          var pages = Math.ceil(results / per_page);
-	          var links = [];
-	          var prev_url = current_page != 1 ? '?page=' + (current_page - 1): '';
-	          links.push({label: '&laquo;', url: prev_url});
-	          for(i = 1; i <= pages; i++) {
-	            var url = current_page == i ? '' : '?page=' + i;
-	            links.push({'label': i, 'url': url});
-	          }
-	          var next_url = current_page != pages ? '?page=' + (current_page + 1) : '';
-	          links.push({'label': '&raquo;', 'url': next_url});
-	          return links;
-	        };
-	        new Meetup().getDevelopers(function(data) {
-	          var paginatorTmpl = $('#developer-paginator').html();
-	          Mustache.parse(paginatorTmpl);   // optional, speeds up future uses
-	          var links = getPaginatorLinks(data.meta.total_count);
-	          var paginator = Mustache.render(paginatorTmpl, {'links': links});
-	          $('#developers').append(paginator);
-	          $.each(data.results, function(i, dev) {
-	              developerData = devPresenter(dev);
-	              createDevCard(developerData);
-	          });
-	          $('#developers').append(paginator);
-	        });
-	        var createDevCard = function (dev) {
-	            var template = $('#developer-card').html();
-	            Mustache.parse(template);   // optional, speeds up future uses
-	            var rendered = Mustache.render(template, {'developer': dev});
-	            $('#developers').append(rendered);
-	        };
-	        var devPresenter = function(dev) {
-	            var separator = ", ";
-	            var interests = "";
-	            dev.topics.forEach(function(topic){
-	              interests += separator + topic.name;
-	            });
-	            interests = interests.substring(separator.length);
-	            var location;
-	            if (dev.city && dev.state) {
-	              location = dev.city + separator + dev.state;
-	            } else if (dev.city) {
-	              location = dev.city;
-	            } else if (dev.state) {
-	              location = dev.state;
-	            }
-	            dev.data = [];
-	            dev.data.push({ field: 'location', value: location});
-	            dev.data.push({ field: 'bio', value: dev.bio});
-	            dev.data.push({ field: 'interests', value: interests});
-	            return dev;
-	        }
-	    }
-	</script>
-
+    <meetup-developers
+        id="developers"
+        api-type="jsonp"
+        api-key="6e7b85c3fc96f524d133273a4556"
+        group="newhavenio"
+        max-developers="40">
+    </meetup-developers>
 </div>
+
+<script>
+    (function () {
+        var maybe = Meetup.maybe;
+        var developersList = document.getElementById('developers');
+        var paginator = document.getElementById('developers-paginator');
+
+        var currentPage = (function () {
+            var query = document.location.search;
+            var page = maybe(query.match(/[?&]page=(\d+)/)).get(1).value;
+            return parseInt(page, 10) || 1;
+        }());
+
+        developersList.addEventListener('refresh', function (evt) {
+            paginator.data = {
+                totalCount: maybe(evt).get('detail.meta.total_count').value,
+                count: evt.target.getAttribute('max-developers'),
+                page: currentPage
+            };
+        });
+
+        developersList.setAttribute('page', currentPage);
+    }());
+</script>

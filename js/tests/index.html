@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NewHaven.io JavaScript Tests</title>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/mochajs/mocha/v2.5.3/mocha.css">
+</head>
+<body>
+  <div id="mocha"></div>
+
+  <!-- Dependencies -->
+  <script src="../webcomponents.min.js"></script>
+  <script src="../mustache.min.js"></script>
+  <script src="../components/meetup-utils.js"></script>
+
+  <!-- Test Harness -->
+  <script src="https://cdn.rawgit.com/chaijs/chai/3.5.0/chai.js"></script>
+  <script src="http://sinonjs.org/releases/sinon-1.17.5.js"></script>
+  <script src="https://cdn.rawgit.com/mochajs/mocha/v2.5.3/mocha.js"></script>
+  <script>mocha.setup('bdd');</script>
+
+  <!-- Test Subjects -->
+  <link rel="import" href="../components/meetup-event-card.html">
+  <link rel="import" href="../components/meetup-developer-card.html">
+  <link rel="import" href="../components/meetup-events.html">
+  <link rel="import" href="../components/meetup-developers.html">
+  <link rel="import" href="../components/meetup-paginator.html">
+
+  <!-- Test Suite -->
+  <script src="meetup-event-card-test.js"></script>
+  <script src="meetup-developer-card-test.js"></script>
+  <script src="meetup-events-test.js"></script>
+  <script src="meetup-developers-test.js"></script>
+  <script src="meetup-paginator-test.js"></script>
+
+  <!-- Test Runner -->
+  <script>
+    (function () {
+      mocha.checkLeaks();
+      mocha.run();
+    }());
+  </script>
+</body>
+</html>
