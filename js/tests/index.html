@@ -17,14 +17,28 @@
   <script src="https://cdn.rawgit.com/chaijs/chai/3.5.0/chai.js"></script>
   <script src="http://sinonjs.org/releases/sinon-1.17.5.js"></script>
   <script src="https://cdn.rawgit.com/mochajs/mocha/v2.5.3/mocha.js"></script>
-  <script>mocha.setup('bdd');</script>
+  <script>
+    (function () {
+      // We can't run the tests till all imports have loaded.
+      var pendingImports = 5;
+      mocha.importLoaded = function importLoaded() {
+        pendingImports--;
+        if (pendingImports < 1) {
+          delete mocha.importLoaded;
+          mocha.run();
+        }
+      };
+      mocha.setup('bdd');
+      mocha.checkLeaks();
+    }());
+  </script>
 
   <!-- Test Subjects -->
-  <link rel="import" href="../components/meetup-event-card.html">
-  <link rel="import" href="../components/meetup-developer-card.html">
-  <link rel="import" href="../components/meetup-events.html">
-  <link rel="import" href="../components/meetup-developers.html">
-  <link rel="import" href="../components/meetup-paginator.html">
+  <link rel="import" href="../components/meetup-event-card.html" onload="mocha.importLoaded()">
+  <link rel="import" href="../components/meetup-developer-card.html" onload="mocha.importLoaded()">
+  <link rel="import" href="../components/meetup-events.html" onload="mocha.importLoaded()">
+  <link rel="import" href="../components/meetup-developers.html" onload="mocha.importLoaded()">
+  <link rel="import" href="../components/meetup-paginator.html" onload="mocha.importLoaded()">
 
   <!-- Test Suite -->
   <script src="meetup-event-card-test.js"></script>
@@ -33,12 +47,5 @@
   <script src="meetup-developers-test.js"></script>
   <script src="meetup-paginator-test.js"></script>
 
-  <!-- Test Runner -->
-  <script>
-    (function () {
-      mocha.checkLeaks();
-      mocha.run();
-    }());
-  </script>
 </body>
 </html>
