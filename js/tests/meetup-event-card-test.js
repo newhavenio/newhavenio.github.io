@@ -31,8 +31,8 @@ describe('meetup-event-card', function () {
 
   it('links to the event', function () {
     var links = this.subject.querySelectorAll('a');
-    var result = Object.keys(links).map(function (key) {
-      return links[key].getAttribute('href');
+    var result = mocha.mapNodeList(links, function (link) {
+      return link.getAttribute('href');
     });
     expect(result).to.include(eventFixture.event_url);
   });
@@ -57,8 +57,8 @@ describe('meetup-event-card', function () {
   it('links to the venue', function () {
     var expected = Meetup.venueMapUrl(eventFixture.venue);
     var links = this.subject.querySelectorAll('a');
-    var result = Object.keys(links).map(function (key) {
-      return links[key].getAttribute('href');
+    var result = mocha.mapNodeList(links, function (link) {
+      return link.getAttribute('href');
     });
     expect(result).to.include(expected);
   });

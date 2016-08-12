@@ -40,8 +40,8 @@ describe('meetup-developer-card', function () {
   it('links to the developer\'s profile', function () {
     this.subject.data = developerFixture;
     var links = this.subject.querySelectorAll('a');
-    var result = Object.keys(links).map(function (key) {
-      return links[key].getAttribute('href');
+    var result = mocha.mapNodeList(links, function (link) {
+      return link.getAttribute('href');
     });
     expect(result).to.include(developerFixture.link);
   });
@@ -49,8 +49,8 @@ describe('meetup-developer-card', function () {
   it('renders a developer\'s photo', function () {
     this.subject.data = developerFixture;
     var links = this.subject.querySelectorAll('img');
-    var result = Object.keys(links).map(function (key) {
-      return links[key].getAttribute('src');
+    var result = mocha.mapNodeList(links, function (link) {
+      return link.getAttribute('src');
     });
     expect(result).to.include(developerFixture.photo.photo_link);
   });

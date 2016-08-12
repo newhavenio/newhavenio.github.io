@@ -19,6 +19,16 @@
   <script src="https://cdn.rawgit.com/mochajs/mocha/v2.5.3/mocha.js"></script>
   <script>
     (function () {
+      // NodeLists are quirky and ugly across browsers. Here is a one stop
+      // shop for mapping:
+      mocha.mapNodeList = function mapNodeList(nodeList, callback, ctx) {
+        var result = [];
+        for (var i = 0, len = nodeList.length; i < len; i++) {
+          result.push(callback.call(ctx, nodeList[i], i, nodeList));
+        }
+        return result;
+      };
+
       // We can't run the tests till all imports have loaded.
       var pendingImports = 5;
       mocha.importLoaded = function importLoaded() {
