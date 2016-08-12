@@ -19,9 +19,9 @@ As geeks self-organize around their preferred technologies, related interest gro
 
 ### Communication and organization in the community
 
-NewHaven.io leverages some well-known tools to achieve its goal of connecting the local tech community. In addition to [our own website](http://newhaven.io/), we make extensive use of [Meetup](http://www.meetup.com/newhavenio/) and [Slack](https://newhavenio.slack.com/). [Meetup](http://www.meetup.com/newhavenio/) is used to organize and schedule in-person gatherings, while [Slack](https://newhavenio.slack.com/) facilitates online communication and collaboration. Many people first discover NewHaven.io through [Meetup](http://www.meetup.com/newhavenio/) by searching locally for events highlighting technologies of interest to them. [Slack](https://newhavenio.slack.com/) is a natural extension of the physical meetings, allowing the conversation to continue fluidly and asynchronously long after the lights have been turned off and the doors have closed.
+NewHaven.io leverages some well-known tools to achieve its goal of connecting the local tech community. In addition to [our own website](http://newhaven.io/), we make extensive use of [Meetup](http://www.meetup.com/newhavenio/) and [Slack](https://newhavenio-slackin.herokuapp.com/). [Meetup](http://www.meetup.com/newhavenio/) is used to organize and schedule in-person gatherings, while Slack facilitates online communication and collaboration. Many people first discover NewHaven.io through [Meetup](http://www.meetup.com/newhavenio/) by searching locally for events highlighting technologies of interest to them. Slack is a natural extension of the physical meetings, allowing the conversation to continue fluidly and asynchronously long after the lights have been turned off and the doors have closed.
 
-Both our [Meetup](http://www.meetup.com/newhavenio/) and [Slack](https://newhavenio.slack.com/) are structured to allow for tech/topic-specific engagement. Anyone from novice to expert can self-select areas that interest them and dive in as shallow or as deep as they choose. This includes proposing meetings where one can either present to a group as an expert or convene a learning session as a novice. We encourage both equally!
+Both our [Meetup](http://www.meetup.com/newhavenio/) and Slack are structured to allow for tech/topic-specific engagement. Anyone from novice to expert can self-select areas that interest them and dive in as shallow or as deep as they choose. This includes proposing meetings where one can either present to a group as an expert or convene a learning session as a novice. We encourage both equally!
 
 ### Partnerships in the community
 
@@ -31,4 +31,4 @@ We regularly collaborate on events with local organizations such as ProductCamp 
 
 ### How will _you_ get involved?
 
-We welcome everyone into NewHaven.io with open arms. Keeping this engine running requires sustained effort, so we're always on the lookout for help. There are numerous opportunities for contributing based on your own personal talents and areas of interest, so pop into our #organizing [Slack](https://newhavenio.slack.com/) channel and introduce yourself today!
+We welcome everyone into NewHaven.io with open arms. Keeping this engine running requires sustained effort, so we're always on the lookout for help. There are numerous opportunities for contributing based on your own personal talents and areas of interest, so [pop into our `#organizing` Slack channel](https://newhavenio-slackin.herokuapp.com/) and introduce yourself today!
