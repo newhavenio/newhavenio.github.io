@@ -9,7 +9,7 @@ source: internal
 ext-url: none
 ---
 
-## What is NewHaven.io and why does it matter?
+You may be peripherally aware of NewHaven.io but not really understand what the group is or why it exists. In a nutshell, we're a nonprofit organization that serves the local tech community. But what does that actually _mean?_
 
 ### Aggregation of local interest groups
 
