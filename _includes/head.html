@@ -27,4 +27,8 @@
   <script src="{{ "/js/mustache.min.js" | prepend: site.baseurl }}"></script>
   <script src="{{ "/js/components/meetup-utils.js" | prepend: site.baseurl }}"></script>
 
+  {% if jekyll.environment == 'production' %}
+  {% include analytics.html %}
+  {% endif %}
+  
 </head>

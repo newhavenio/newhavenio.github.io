@@ -11,7 +11,7 @@ gems: [jekyll-paginate]
 title: newhaven.io
 email: your-email@domain.com
 description: > # this means to ignore newlines until "baseurl:"
-  newhaven.io is a group of talented and passionate individuals living, working and creating in the New Haven area. 
+  newhaven.io is a group of talented and passionate individuals living, working and creating in the New Haven area.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://newhaven.io" # the base hostname & protocol for your site
 permalink: /blog/:title/
@@ -23,3 +23,6 @@ sass:
 
 # Build settings
 markdown: kramdown
+
+# Google services
+google_analytics: UA-82628918-1
