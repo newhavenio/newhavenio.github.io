@@ -6,12 +6,10 @@
 
         <div class="masthead-buttons">
             {% for button in site.data.home-buttons %}
-                <button type="button" class="btn">
-                    <a href="{{ button.link }}" target="_blank">
-                        <i class="fa fa-{{ button.icon }}"></i>
-                        {{ button.name }}
-                    </a>
-                </button>
+                <a href="{{ button.link }}" class="btn btn-default" target="_blank">
+                    <i class="fa fa-{{ button.icon }}"></i>
+                    {{ button.name }}
+                </a>
             {% endfor %}
         </div>
 
