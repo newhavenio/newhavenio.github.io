@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Welcome to the new NewHaven.IO!"
-date:   2016-2-23
+date:   2016-7-23
 categories: update
 author: Max Antonucci
 
