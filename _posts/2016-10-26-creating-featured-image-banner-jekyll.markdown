@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Creating an Title Banner in Jekyll"
+title:  "Creating a Title Banner in Jekyll"
 date:   2016-10-26
 categories: jekyll featured banner front-end tutorial
 author: Max Antonucci
@@ -11,7 +11,7 @@ ext-url: none
 
 Today there's lots of popular front-end patterns: the off-canvas menu, cards, flexbox media objects, just to name a few. One of the most popular I've seen, and am still seeing more of, is what I call the "Title Banner" (I apologize if there's a more official name out there I didn't find). It's popular for very good reasons and many devs will find it useful. This is a quick tutorial on making one for a Jekyll site.
 
-### Back up. What is an Title Banner?
+### Back up. What is a Title Banner?
 
 A common obstacle for many web designers is: for articles, how does one best organize an article's title and featured image? The most common answer has been simply putting the image below the title and byline information. The New York Times is just one example of this.
 
@@ -61,7 +61,7 @@ The quickest, most effective way I know is otherwise frowned upon in front-end: 
 </div>
 {% endhighlight %}
 
-Viola, we now have a post template that will include any image one choses as a background image. Some extra CSS is needed for display reasons, but since it's the same for each banner, it can be used in the regular stylesheet.
+Voilà, we now have a post template that will include any image one choses as a background image. Some extra CSS is needed for display reasons, but since it's the same for each banner, it can be used in the regular stylesheet.
 
 {% highlight css %}
 .TitleBanner {
@@ -94,7 +94,7 @@ The solution: set it as the background image in the CSS file. Posts without a fe
 
 I think this is one of the biggest reasons people decide against a Title Banner: if the image and the text are similarly colored, the text can't be read. It's hard to read white text against an image of a snowstorm after all.
 
-The hard solution is take and edit photos specifically with contrast in mind, which can really limit the options of photography-illiterate devs0. The second is to guarantee there'll be contrast with a little CSS.
+The hard solution is take and edit photos specifically with contrast in mind, which can really limit the options of photography-illiterate devs. The second is to guarantee there'll be contrast with a little CSS.
 
 After some digging I found out that box shadows on an element will appear over the background image. So all one needs to do is apply a dark box shadow to the header, make the text a light color, and the contrast is there!
 
@@ -161,7 +161,7 @@ Now any post can have a light _or_ dark image contrast!
 
 The Title Banner is a popular pattern, and for good reason. It's stylish, uses less space, and improves user experience. Title Banners that can work with lots of different images can find lots of use on any website, personal and professional.
 
-Even if you don't code with Jekyll, the basic way it's executed here can be carried over for almost any other CMS. So for front-end devs, it's a pattern with getting familiar with.
+Even if you don't code with Jekyll, the basic way it's executed here can be carried over for almost any other CMS. So for front-end devs, it's a pattern worth getting familiar with.
 
 ---
 
