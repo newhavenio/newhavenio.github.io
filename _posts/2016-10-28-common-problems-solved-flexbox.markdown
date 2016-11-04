@@ -67,7 +67,7 @@ Flexbox has a way. For this straightforward example, select every even (or odd) 
 
 One common issue I've faced before is with highlighted items in a grid. Items you want to draw special attention to, in this case by making them larger, but it risks disrupting the layout. In most cases I'd need to code the grid around a specific location for highlighted items to go. __But what about grids where highlighted items, that were sized differently, could be located anywhere?__
 
-Some creative Flexbox work shows how. One just needs to change the `flex-basis` and `flex-grow` properties for highlighted items, which respectfully control the minimum width of the item, and the percentage of extra space it takes up.
+Some creative Flexbox work shows how. One just needs to change the `flex-basis` and `flex-grow` properties for highlighted items, which respectively control the minimum width of the item, and the percentage of extra space it takes up.
 
 Let's see this in the below example of several social links. Regular links have a `flex-basis` of 5em and a `flex-grow` of 1. Highlighted items, meanwhile, have a `flex-basis` of 8em and a `flex-grow` of 8. This means highlighted items take up 3 more ems of space in the beginning, and get 8x as much of the leftover space to fill up each row. That, plus a few other style changes, makes them stand out from all the other icons. These classes can be put on any number of links in any place. They'll adjust as needed, giving a lot more control over their highlighting.
 
