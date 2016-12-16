@@ -4,19 +4,19 @@ title: "Four Tips for Using Sass Variables"
 date: 2016-12-14
 categories: front-end sass css
 author: Max Antonucci
-excerpt: Sass variables help keep your CSS efficient and flexible, but they're more complex than you may think. These are four basic tips to get the most out from your Sass variables.
+excerpt: Sass variables help keep your CSS efficient and flexible, but they're more complex than you may think. These are four basic tips to get the most from your Sass variables.
 
 source: internal
 ext-url: none
 ---
 
-While [Sass](http://sass-lang.com/) brings many great functions to CSS, one of the biggest is variables. Variables mean no more `ctrl-F`-ing our way through stylesheets when we change a color or margin value. Putting these frequent values in one place makes managing them that much easier.
+While [Sass](http://sass-lang.com/) brings many great functions to CSS, one of the biggest is variables. Variables mean no more <kbd>CTRL</kbd>+<kbd>F</kbd>-ing our way through stylesheets when we change a color or margin value. Putting these frequent values in one place makes managing them that much easier.
 
 Turns out there's much more to Sass variables then that basic use. At least if you want to get as much out of them as possible.
 
 These are four basic tips to get a lot more out of Sass variables. They'll help developers use more variables with fewer issues and write DRYer code too. If you're relatively new to Sass and want to expand your understanding, this article's for you.
 
-### Know the Different Variable Types
+### Tip 1: Know the Different Variable Types
 
 There's Sass variable types that Javascript writers may be familiar with. The variable type directly affects how the value is called and how complex it is, so this a good starting point for learning more.
 
@@ -52,6 +52,11 @@ $element-colors: #F00, #0F0, #00F;
     .element:nth-of-type(#{$i}) { background-color: $color; }
 }
 
+// This loop would output:
+// .element:nth-of-type(1) { background-color: #F00; }
+// .element:nth-of-type(2) { background-color: #0F0; }
+// .element:nth-of-type(3) { background-color: #00F; }
+
 // This is calling a color by the index alone
 .another-element {
     
@@ -61,7 +66,7 @@ $element-colors: #F00, #0F0, #00F;
 
 You'll notice the start of a Sass list's index is 1, not 0. This often throws off many people who've only used Javascript arrays before.
 
-Also note the `@each` loop uses the `$i` variable in it's selector. Using that, or even the `$color` variable, is important. Otherwise it'd create the same `.element` selector three times, and only the last one would work. Remember to use these variables for selectors in `@each` loop for this reason, and in that context reference them like this:`#{$i}`.
+Also note the `@each` loop uses the `$i` variable in it's selector. Using that, or even the `$color` variable, is important. Otherwise it'd create the same `.element` selector three times, and only the last one would work. Remember to use these variables for selectors in an `@each` loop for this reason, and in that context reference them like this:`#{$i}`.
 
 #### Map Variables
 
@@ -85,6 +90,11 @@ Similar to lists, `@each` loops are used to access the values. Developers can al
     .#{$name}-background { background-color: $color; }
 }
 
+// This loop would output:
+// .color1-background { background-color: #F00; }
+// .color2-background { background-color: #0F0; }
+// .color3-background { background-color: #00F; }
+
 // We can also use $map-get to get a certain value
 .cool-element {
     background-color: map-get($color-map, color1); // Returns #F00
@@ -95,7 +105,7 @@ This syntax is similar to lists and only needs a few changes for the extra value
 
 Those are the essentials to the different Sass variables in this post. You can get more complex by [nesting Sass lists and maps,](https://www.sitepoint.com/sass-maps-vs-nested-lists/), or [using conditionals within your loops](http://thesassway.com/intermediate/if-for-each-while), but that's a level of detail for another article. The rest of the tips only rely on these basics (mostly).
 
-### Know the Different Variables Scopes
+### Tip 2: Know the Different Variables Scopes
 
 In another parallel to Javascript variables, Sass variables have different scopes. While there's only two official scopes, I like to think there's three for better structure. So these three scopes, going from largest to smallest, are as follows:
 
@@ -107,7 +117,7 @@ Global variables are the onces referenced the earliest in a collection of Sass f
 
 This is the scope that isn't technically isn't real, but I think is useful to pretend exists. Variables with a single file scope only exist in one sass file. An example: in the styles for a thumbnail component, there'd be variables for the thumbnails padding, border, layout widths, or others. The most important thing is these are declared at the file's start and used only in that sheet. This way it's easy to adjust important styles for it without running through dozens or hundreds of lines of code. Just go to that file's variables and change the values.
 
-Why isn't this a real scope? Because these variables could be used by every sass partial afterward. It's important not to do this, since it risks changes to one component accidentally affecting others and creating bugs. Single file variables can only be used in the files declaring them.
+Why isn't this a real scope? Because these variables could be used by every sass partial afterward. It's important not to do this, since it risks changes to one component accidentally affecting others and creating bugs. Single file variables should only be used in the files declaring them.
 
 #### Selector Scope
 
@@ -154,7 +164,7 @@ $thumb-bg      : $g-white;
 
 {% endhighlight %}
 
-### Use a Naming Convention
+### Tip 3: Use a Naming Convention
 
 Notice the odd variable names in the above examples? Projects usually have lots of variables in different categories, so a naming convention is great for organizing them. Good names help a variable's scope, category, and specific purpose be known at a glance.
 
@@ -179,7 +189,7 @@ Once you get the basics, you can usually figure out a variable's general purpose
 
 This method isn't perfect. Variable names can get large, unwieldy, and harder to remember. Plus name-spaces like `$hdr-` are short but unclear. But the organization and clarity they give is worth it in the long run.
 
-### Combine Variables and Loops to Save Time
+### Tip 4: Combine Variables and Loops to Save Time
 
 Lastly, a common mindset about variables is they're only used to substitute values. Don't forget they can also keep your CSS extremely DRY. In the examples list and map variable examples, I looped through values to create lots of needed CSS from just a few lines.
 
