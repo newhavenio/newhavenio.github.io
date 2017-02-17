@@ -51,7 +51,7 @@ Pulling this off can be tough, so here's some good rules to follow:
 
 * If you're putting components in other components, like a logo and navigation in a header, define the inner containers separately. For example, the header would include a `.header__logoContainer` and `.header__navContainer` that controls the width and placement relative to other components inside the header. Then you'll simply drop the needed components in these containers without changing their layouts directly. It's easier to keep editing components separately and swap in different ones if needed.
 * Only set component widths to be inline or 100%. They'll either expand to snugly fit in their containers, or stay a normal width if they're simpler components like buttons.
-* Don't extra margin around components, or other styles that affect the space around them, whenever possible. This includes floats!
+* Don't add extra margins around components, or other styles that affect the space around them, whenever possible. This includes floats!
 
 All this will help ensure that issues with what components due won't create others with where they're located, and vice versa.
 
@@ -61,7 +61,7 @@ While a pattern library's main point is to organizing separate pieces, having ex
 
 Pattern Lab does this efficiently by letting developers create both templates and pages. Templates are pages with placeholder text and images, while pages use actual text and images from the site. The data is defined separate from the components, making it faster and easier to create representative examples of site pages.
 
-It's another reason to keep your HTML completely DRY. If any HTML changes, it should also change in the templates. Keeping the data and markup separate means lets you do this with less risk of breaking something.
+It's another reason to keep your HTML completely DRY. If any HTML changes, it should also change in the templates. Keeping the data and markup separate lets you do this with less risk of breaking something.
 
 One final perk: these templates speed up the process of using a pattern library in a CMS. Just copy part or all of the page, connect the HTML to the back-end as needed, and you're set!
 
@@ -177,7 +177,7 @@ Choose what naming convention works for you. Even if it means playing around wit
 
 My personal rule about 3rd-party frameworks, like Bootstrap or Foundation, is "avoid when possible." If you're making a pattern library from scratch and there's no explicit reason to use one, don't.
 
-My main argument for this is **3rd-party frameworks come with different rules and conventions you'll need to work around if they're different from yours.** Using a naming convention or global variables gets tougher when the framework already has it's own ideas going for it. There's more opportunities for conflicts, and often more need for messy overrides, workarounds, and abuse of `!important`.
+My main argument for this is **3rd-party frameworks come with different rules and conventions you'll need to work around if they're different from yours.** Using a naming convention or global variables gets tougher when the framework already has its own ideas going for it. There's more opportunities for conflicts, and often more need for messy overrides, workarounds, and abuse of `!important`.
 
 Now if it's a framework you're very comfortable with, agree with in important rules and conventions, and it'll save much-needed time, then go right ahead. Otherwise, avoid headaches and start from scratch.
 
