@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tips for Making Maintainable Pattern Libraries"
-date: 2016-02-17
+date: 2017-02-17
 categories: front-end sass pattern library modular design
 author: Max Antonucci
 excerpt: It's easy to see why pattern libraries are useful, but tough to successfully maintain them over time.
