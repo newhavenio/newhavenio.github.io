@@ -37,12 +37,10 @@ $masthead-btn-color: #4A4D50;
 	}
 }
 
-.masthead-slack { padding-top: 2em;
-
-	iframe {
-		display: block;
-		margin: 0 auto;
-	}
+.masthead-slack {
+	padding-top: 2em;
+	margin: 0 auto;
+	text-align: center;
 }
 
 // Masthead layout with flexbox
