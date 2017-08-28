@@ -1,3 +1,5 @@
+<link rel="import" href="{{ "/js/components/slack-button.html" | prepend: site.baseurl }}">
+
 <div id="masthead">
     <div class="masthead-copy container-fluid">
         <h2 class="masthead-title">Welcome to {{ site.title }}</h2>
@@ -14,7 +16,7 @@
         </div>
 
         <div class="masthead-slack">
-            <iframe src="https://newhavenio-slackin.herokuapp.com/iframe" class="__slackin" style="border-width: 0px; width: 108px; height: 20px; visibility: visible;"></iframe>
+            <slack-button></slack-button>
         </div>
     </div>
 </div>
