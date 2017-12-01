@@ -1,0 +1,16 @@
+{
+  "name": "newhavenio.github.io",
+  "version": "2.0.0",
+  "main": "index.html",
+  "repository": "git@github.com:newhavenio/newhavenio.github.io.git",
+  "author": "maxx1128 <maxx1128@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "jquery": "3.2.1"
+  },
+  "devDependencies": {
+    "bourbon": "^4.2.4",
+    "susy": "^2.2.9"
+  }
+}
