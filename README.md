@@ -2,18 +2,26 @@
 
 New Jekyll site for NewHaven.io, using Bootstrap and Jekyll for more collaboration in development and blog writing.
 
-## Setup Dev Env
-$ gem install jekyll
-$ npm -g install bower
-## Setup repo
-$ bower install
-$ jekyll server
+## Setup Dev Dependencies
 
-## Local Dev and contributing
-This section is a collection of notes from a failed attempt to run locally
-* git flow
-* `gem install jekyll && jekyll serve`
-* `bundle install && npm install && bower install`
+```
+$ gem install bundler # if not already installed
+$ npm -g install yarn
+```
+
+## Install Application Dependencies
+
+```
+$ bundle
+$ yarn
+```
+
+## Run Application Server
+
+```
+$ jekyll serve
+```
+
 
 ## License ##
 
