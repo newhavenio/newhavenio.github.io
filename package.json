@@ -7,7 +7,10 @@
   "license": "MIT",
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
-    "jquery": "3.2.1"
+    "jquery": "3.2.1",
+    "modernizr": "3.2.0",
+    "mustache": "^2.3.0",
+    "webcomponentsjs": "^1.0.2"
   },
   "devDependencies": {
     "bourbon": "^4.2.4",
