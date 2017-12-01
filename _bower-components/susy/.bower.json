@@ -23,15 +23,14 @@
     "*.json",
     "*.gemspec"
   ],
-  "version": "2.2.9",
-  "_release": "2.2.9",
+  "version": "2.2.12",
+  "_release": "2.2.12",
   "_resolution": {
     "type": "version",
-    "tag": "2.2.9",
-    "commit": "3143c319d33fb08c734ec5f6872842438f8357f3"
+    "tag": "2.2.12",
+    "commit": "edcded39bf4626b072d7768b70b26a9dfee02d17"
   },
-  "_source": "git://github.com/ericam/susy.git",
+  "_source": "https://github.com/ericam/susy.git",
   "_target": "~2.2.9",
-  "_originalSource": "susy",
-  "_direct": true
+  "_originalSource": "susy"
 }
