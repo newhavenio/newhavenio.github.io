@@ -9,7 +9,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "bootstrap-sass": "~3.3.6"
+    "bootstrap-sass": "~3.3.7"
   },
   "devDependencies": {
     "bourbon": "~4.2.4",
