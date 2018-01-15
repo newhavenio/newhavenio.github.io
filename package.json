@@ -1,0 +1,22 @@
+{
+  "name": "newhavenio.github.io",
+  "version": "2.0.0",
+  "main": "index.html",
+  "repository": "git@github.com:newhavenio/newhavenio.github.io.git",
+  "contributors": [
+    "Maxwell Jekyll <maxx1128@gmail.com>",
+    "Josh Santos <josh@omnidapps.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^1.0.20",
+    "bootstrap-sass": "^3.3.7",
+    "jquery": "3.2.1",
+    "modernizr": "3.2.0",
+    "mustache": "^2.3.0"
+  },
+  "devDependencies": {
+    "bourbon": "^4.2.4",
+    "susy": "^2.2.9"
+  }
+}
