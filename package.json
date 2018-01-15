@@ -1,18 +1,22 @@
 {
+  "name": "newhavenio.github.io",
+  "version": "2.0.0",
+  "main": "index.html",
+  "repository": "git@github.com:newhavenio/newhavenio.github.io.git",
   "contributors": [
-	"Maxwell Jekyll <maxx1128@gmail.com>",
-	"Josh Santos <josh@omnidapps.com>"
+    "Maxwell Jekyll <maxx1128@gmail.com>",
+    "Josh Santos <josh@omnidapps.com>"
   ],
+  "license": "MIT",
   "dependencies": {
-    "@bower_components/bootstrap-sass": "twbs/bootstrap-sass#~3.3.7",
-    "@bower_components/bourbon": "thoughtbot/bourbon#~4.2.4",
-    "@bower_components/jquery": "jquery/jquery-dist#1.9.1 - 3",
-    "@bower_components/susy": "ericam/susy#~2.2.9"
+    "@webcomponents/webcomponentsjs": "^1.0.20",
+    "bootstrap-sass": "^3.3.7",
+    "jquery": "3.2.1",
+    "modernizr": "3.2.0",
+    "mustache": "^2.3.0"
   },
-  "engines": {
-    "yarn": ">= 1.0.0"
-  },
-  "scripts": {
-    "postinstall": "node -e \"try { require('fs').symlinkSync(require('path').resolve('node_modules/@bower_components'), 'bower_components', 'junction') } catch (e) { }\""
+  "devDependencies": {
+    "bourbon": "^4.2.4",
+    "susy": "^2.2.9"
   }
 }
