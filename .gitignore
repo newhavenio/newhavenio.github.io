@@ -10,3 +10,5 @@ _bower-components
 .vagrant
 bundle.js
 main.css
+node_modules
+vendor
