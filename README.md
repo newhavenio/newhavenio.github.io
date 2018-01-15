@@ -6,8 +6,8 @@ New Jekyll site for NewHaven.io, using Bootstrap and Jekyll for more collaborati
 This section is a collection of notes from a failed attempt to run locally
 * `npm -g install yarn`
 * `yarn`
-* `gem install jekyll && jekyll serve`
 * `bundle install`
+* `gem install jekyll && jekyll serve`
 
 git-flow is a nice tool you can use to create feature branches, and bugfixes to this repository.
 
