@@ -1,4 +1,8 @@
 {
+  "contributors": [
+	"Maxwell Jekyll <maxx1128@gmail.com>",
+	"Josh Santos <josh@omnidapps.com>"
+  ],
   "dependencies": {
     "@bower_components/bootstrap-sass": "twbs/bootstrap-sass#~3.3.7",
     "@bower_components/bourbon": "thoughtbot/bourbon#~4.2.4",
