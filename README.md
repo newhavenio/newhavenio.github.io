@@ -2,18 +2,16 @@
 
 New Jekyll site for NewHaven.io, using Bootstrap and Jekyll for more collaboration in development and blog writing.
 
-## Setup Dev Env
-$ gem install jekyll
-$ npm -g install bower
-## Setup repo
-$ bower install
-$ jekyll server
-
 ## Local Dev and contributing
 This section is a collection of notes from a failed attempt to run locally
-* git flow
+* `npm -g install yarn`
+* `yarn`
 * `gem install jekyll && jekyll serve`
-* `bundle install && npm install && bower install`
+* `bundle install`
+
+git-flow is a nice tool you can use to create feature branches, and bugfixes to this repository.
+
+For more information, check out https://github.com/petervanderdoes/gitflow-avh
 
 ## License ##
 
