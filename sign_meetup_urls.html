@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Meetup Signed URL Utility</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hack/0.8.0/hack.css">
+
+  <style type="text/css">
+    .hidden { display: none; }
+    .error { color: red; }
+  </style>
+
+  <script type="text/javascript">
+    // Module boot {{{1
+    define.defs = {};
+    define.modules = {};
+    function define(name, fn) {
+      define.defs[name] = fn;
+    }
+    function require(name) {
+      if (define.modules.hasOwnProperty(name)) return define.modules[name];
+      if (define.defs.hasOwnProperty(name)) {
+        var fn = define.defs[name];
+        define.defs[name] = function () { throw new Error("Circular Dependency"); };
+        return define.modules[name] = fn();
+      }
+      throw new Error("Module not found: " + name);
+    }
+
+    // Module app {{{1
+    define('app', function() {
+      return {
+        urlPrefix: 'https://api.meetup.com/2',
+        urlName: 'newhavenio'
+      };
+    });
+
+    // Module getJSONP {{{1
+    define('getJSONP', function() {
+      return function getJSONP(url, cb) {
+        var timeout, script, insertEl;
+        var elementId = '_' + Math.floor(10000 * Math.random()).toString(16);
+        var callbackName = 'jsonp_callback_' + elementId;
+
+        function cleanup() {
+          delete window[callbackName];
+          var el = document.getElementById(elementId);
+          el.parentNode.removeChild(el);
+        }
+
+        window[callbackName] = function jsonpCallback(data) {
+          window.clearTimeout(timeout);
+          cleanup();
+          cb(null, data);
+        };
+
+        timeout = window.setTimeout(function jsonpTimeout() {
+          cleanup();
+          cb(new Error('JSONP timeout'));
+        }, 5000);
+
+        script = document.createElement('script');
+        script.src = url + (url.indexOf('?') === -1 ? '?' : '&') +
+          'callback=' + callbackName;
+        script.id = elementId;
+        script.type = 'text/javascript';
+        script.async = true;
+
+        insertEl = document.getElementsByTagName('head')[0] ||
+          document.body || document.documentElement;
+        insertEl.appendChild(script);
+      };
+    });
+
+    // Module getEl {{{1
+    define('dom', function() {
+      function el(id) {
+        return document.getElementById(id);
+      }
+
+      function on(el, evt, fn) {
+        return el.addEventListener(evt, fn);
+      }
+
+      return {el: el, on: on};
+    });
+
+    // Module validate {{{1
+    define('validate', function() {
+      var pattern = /^[a-f0-9]{25,}$/i;
+      return function(value) {
+        if (value == null || value === '') { return null; }
+        return pattern.test(value);
+      };
+    });
+
+    // Module onInput {{{1
+    define('onInput', function() {
+      var dom = require('dom');
+      var validate = require('validate');
+      var fieldset = dom.el('apikey-fieldset');
+      var input = dom.el('apikey');
+
+      return function(evt) {
+        evt.preventDefault();
+        switch (validate(input.value)) {
+          case true:
+            fieldset.className = 'form-group form-success';
+            break;
+          case false:
+            fieldset.className = 'form-group form-error';
+            break;
+          default:
+            fieldset.className = 'form-group';
+        }
+        return false;
+      }
+    });
+
+    // Module onSubmit {{{1
+    define('onSubmit', function() {
+      var dom = require('dom');
+      var fetchEventsUrl = require('fetchEventsUrl');
+      var fetchMembersUrl = require('fetchMembersUrl');
+      var input = dom.el('apikey');
+      var outputDiv = dom.el('output');
+      var eventsOutput = dom.el('events-output');
+      var membersOutput = dom.el('members-output');
+
+      function output(el) {
+        return function(err, result) {
+          result = err ? err : result;
+          el.innerHTML = '';
+          el.className = err ? 'error' : '';
+          el.appendChild(document.createTextNode(result));
+        };
+      }
+
+      return function(evt) {
+        evt.preventDefault();
+        outputDiv.className = '';
+        eventsOutput.className = '';
+        membersOutput.className = '';
+        eventsOutput.innerHTML = '<div class="loading"></div> Fetching&hellip;';
+        membersOutput.innerHTML = '<div class="loading"></div> Fetching&hellip;';
+        fetchEventsUrl(input.value, output(eventsOutput));
+        fetchMembersUrl(input.value, output(membersOutput));
+        return false;
+      }
+    });
+
+    // Module fetchEventsUrl {{{1
+    define('fetchEventsUrl', function() {
+      var app = require('app');
+      var getJSONP = require('getJSONP');
+      var formatSignedUrl = require('formatSignedUrl');
+      var renderEventsResult = require('renderEventsResult');
+
+      return function(value, cb) {
+        var params = [
+          'key=' + encodeURIComponent(value),
+          'group_urlname=' + encodeURIComponent(app.urlName),
+          'sign=true',
+          'page=200',
+          'status=upcoming',
+          'order=time'
+        ];
+        var url = app.urlPrefix + '/events?' + params.join('&');
+        getJSONP(url, formatSignedUrl(renderEventsResult(cb)));
+      };
+    });
+
+    // Module fetchMemebersUrl {{{1
+    define('fetchMembersUrl', function() {
+      var app = require('app');
+      var getJSONP = require('getJSONP');
+      var formatSignedUrl= require('formatSignedUrl');
+      var renderMembersResult = require('renderMembersResult');
+
+      return function(value, cb) {
+        var params = [
+          'key=' + encodeURIComponent(value),
+          'group_urlname=' + encodeURIComponent(app.urlName),
+          'sign=true',
+          'page=40',
+          'photo-host=public',
+          'order=name'
+        ];
+        var url = app.urlPrefix + '/members?' + params.join('&');
+        getJSONP(url, formatSignedUrl(renderMembersResult(cb)));
+      };
+    });
+
+    // Module renderEventsResult {{{1
+    define('renderEventsResult', function() {
+      return function renderEventsResult(cb) {
+        return function (err, result) {
+          if (err) { return cb(err); }
+          cb(null,
+            "  exports.eventsUrl = function eventsUrl(params) {\n" +
+            "    /* jshint camelcase: false */\n" +
+            "    // " + result.url + "\n" +
+            "    return 'https://api.meetup.com/2/events?' +\n" +
+            "    exports.parameterize({\n" +
+            result.params.map(function(param) {
+              return "      '" + param[0] + "': '" + param[1] + "',\n";
+            }).join('') +
+            "      'format': 'json',\n" +
+            "      'offset': params.offset || 0\n" +
+            "    });\n" +
+            "  };"
+          );
+        };
+      };
+    });
+
+    // Module renderMembersResult {{{1
+    define('renderMembersResult', function() {
+      return function renderMembersResult(cb) {
+        return function (err, result) {
+          if (err) { return cb(err); }
+          cb(null,
+            "  exports.developersUrl = function developersUrl(params) {\n" +
+            "    /* jshint camelcase: false */\n" +
+            "    // " + result.url + "\n" +
+            "    return 'https://api.meetup.com/2/members?' +\n" +
+            "    exports.parameterize({\n" +
+            result.params.map(function(param) {
+              return "      '" + param[0] + "': '" + param[1] + "',\n";
+            }).join('') +
+            "      'format': 'json',\n" +
+            "      'offset': params.offset || 0\n" +
+            "    });\n" +
+            "  };"
+          );
+        };
+      };
+    });
+
+    // Module formatSignedUrl {{{1
+    define('formatSignedUrl', function() {
+      var urlParse = require('urlParse');
+
+      return function(cb) {
+        return function(err, result) {
+          var signedUrl;
+          if (err) { return cb(err); }
+          if (result.code) {
+            return cb(new Error(result.problem || 'Unable to parse response'));
+          }
+          try {
+            signedUrl = result.meta.signed_url;
+          } catch (error) {
+            return cb(new Error('Unable to parse response'));
+          }
+          var params = urlParse(signedUrl);
+          cb(null, {url: signedUrl, params: params});
+        }
+      };
+    });
+
+    // Module urlParse {{{1
+    define('urlParse', function() {
+      var blacklist = ['callback', 'format', 'offset'];
+      return function(url) {
+        var link = document.createElement('a');
+        link.href = url;
+        var query = link.search.substr(1);
+        var result = [];
+        query.split('&').forEach(function(param) {
+          var parts = param.split('=');
+          if (!blacklist.includes(parts[0])) {
+            result.push([parts[0], decodeURIComponent(parts[1])]);
+          }
+        });
+        return result;
+      }
+    });
+
+    // Module init {{{1
+    define('init', function() {
+      var dom = require('dom');
+      dom.on(dom.el('main'), 'submit', require('onSubmit'));
+      dom.on(dom.el('apikey'), 'input', require('onInput'));
+    });
+
+    // }}}1
+  </script>
+</head>
+<body class="hack">
+  <div class="container">
+    <h1>Newhaven.io Meetup URL Signing tool</h1>
+
+    <div class="alert alert-info">
+      The API Key can be obtained from <a href="https://secure.meetup.com/meetup_api/key/" target="_blank">here</a>.
+    </div>
+
+    <div class="alert alert-warning">
+      The API Key stays in browser and <strong>should never be saved to the source</strong>.
+    </div>
+
+    <form id="main" class="form" action="#">
+      <fieldset id="apikey-fieldset" class="form-group">
+        <label for="apikey">Meetup API key:</label>
+        <input id="apikey" type="password" class="form-control">
+      </fieldset>
+      <button type="submit" class="btn btn-primary btn-ghost">Get Signed URLS</button>
+    </form>
+
+    <div id="output" class="hidden">
+      <hr>
+
+      <p>Replace the following methods in <code>js/components/meetup-utils.js</code>.</p>
+
+      <h2>Events</h2>
+
+      <pre><code id="events-output">Pending&hellip;</code></pre>
+
+      <h2>Members</h2>
+
+      <pre><code id="members-output">Pending&hellip;</code></pre>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    require('init');
+  </script>
+</body>
+</html>
+<!-- vim:set ts=2 sw=2 fdm=marker et: -->
