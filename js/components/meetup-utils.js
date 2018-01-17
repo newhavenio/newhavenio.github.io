@@ -68,32 +68,36 @@
 
   exports.eventsUrl = function eventsUrl(params) {
     /* jshint camelcase: false */
+    // https://api.meetup.com/2/events?offset=0&format=json&limited_events=False&group_urlname=newhavenio&callback=jsonp_callback__4b9&page=200&fields=&order=time&status=upcoming&desc=false&sig_id=24225622&sig=e6b428bddf46d010db2258f90b3a2c46b79057cb
     return 'https://api.meetup.com/2/events?' +
       exports.parameterize({
-        key: params.key,
-        group_urlname: params.group_urlname,
-        sign: true,
-        offset: params.offset || 0,
-        format: 'json',
-        limited_events: 'False',
-        page: params.page || 200,
-        order: 'time',
-        desc: false,
-        status: 'upcoming'
+        'limited_events': 'False',
+        'group_urlname': 'newhavenio',
+        'page': '200',
+        'fields': '',
+        'order': 'time',
+        'status': 'upcoming',
+        'desc': 'false',
+        'sig_id': '24225622',
+        'sig': 'e6b428bddf46d010db2258f90b3a2c46b79057cb',
+        'format': 'json',
+        'offset': params.offset || 0
       });
   };
 
   exports.developersUrl = function developersUrl(params) {
     /* jshint camelcase: false */
+    // https://api.meetup.com/2/members?offset=0&format=json&group_urlname=newhavenio&callback=jsonp_callback__1a09&photo-host=public&page=40&order=name&sig_id=24225622&sig=cae8012874ef95501f7860f4b3b3bb69103d5c88
     return 'https://api.meetup.com/2/members?' +
       exports.parameterize({
-        key: params.key,
-        group_urlname: params.group_urlname,
-        sign: true,
+        'group_urlname': 'newhavenio',
         'photo-host': 'public',
-        order: 'name',
-        page: params.page || 40,
-        offset: params.offset || 0
+        'page': '40',
+        'order': 'name',
+        'sig_id': '24225622',
+        'sig': 'cae8012874ef95501f7860f4b3b3bb69103d5c88',
+        'format': 'json',
+        'offset': params.offset || 0
       });
   };
 
