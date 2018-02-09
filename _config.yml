@@ -18,7 +18,10 @@ permalink: /blog/:title/
 paginate: 9,
 paginate_path: "/blog/page:num/"
 
-exclude: []
+exclude: [
+  "node_modules/mustache/README.md", 
+  "node_modules/mustache/CHANGELOG.md",
+  "node_modules/doctrine/README.md"]
 
 sass:
   style: compressed
