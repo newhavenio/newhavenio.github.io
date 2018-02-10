@@ -3,3 +3,4 @@ _site
 .sass-cache
 feed.xml
 yarn-error.log
+_bower-components
