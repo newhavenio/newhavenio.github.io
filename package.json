@@ -6,7 +6,6 @@
   "author": "maxx1128 <maxx1128@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@webcomponents/webcomponentsjs": "^1.0.20",
     "bootstrap-sass": "^3.3.7",
     "jquery": "3.2.1",
     "modernizr": "3.2.0",

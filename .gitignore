@@ -3,3 +3,4 @@ _site
 .sass-cache
 feed.xml
 node_modules
+yarn-error.log
