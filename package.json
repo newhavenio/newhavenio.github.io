@@ -3,7 +3,14 @@
   "version": "2.0.0",
   "main": "index.html",
   "repository": "git@github.com:newhavenio/newhavenio.github.io.git",
-  "author": "maxx1128 <maxx1128@gmail.com>",
+  "contributors": [
+     "Brady Sutton <bsutt123@gmail.com>"
+     "Dan Bernier <danbernier@gmail.com>"
+     "Joel Nimety <jnimety@gmail.com>",
++    "Josh Santos <josh@omnidapps.com>",
++    "maxx1128 <maxx1128@gmail.com>",
+     "Zach Morek" <zmorek@gmail.com>"
++  ],
   "license": "MIT",
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
