@@ -1,6 +1,5 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-# you're doing.
 
 Vagrant.configure("2") do |config|
 
@@ -41,5 +40,4 @@ Vagrant.configure("2") do |config|
     source /home/vagrant/.nvm/nvm.sh; npm -g install yarn
 
   SHELL
-  
 end
