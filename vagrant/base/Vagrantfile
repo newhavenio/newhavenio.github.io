@@ -1,0 +1,45 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# you're doing.
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "jcbbjjttt/artful64-10G"
+
+  # config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 4000, host: 4000
+
+  config.vm.synced_folder "../", "/home/vagrant/newhavenio.github.io"
+
+  # Enable console colors
+  config.vm.provision "file", source: ".bashrc", destination: "/home/vagrant/.bashrc"
+
+  # Installing dependencies
+  config.vm.provision "shell", inline: <<-SHELL
+
+     # Upgrade to latest software packages
+     apt-get update
+     apt-get upgrade -y
+     while [ $? -ne 0 ]; do
+       sleep 1
+       apt-get upgrade -y
+     done
+
+    # Setup Node
+    wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh >> /tmp/install.sh
+    su -c "bash /tmp/install.sh" vagrant
+    su -c "source ~/.nvm/nvm.sh; nvm install v9.3.0; nvm use v9.3.0" vagrant
+
+    # Setup Dev environment dependencies
+
+    apt-get install -y ruby ruby-dev cmake build-essential zlib1g-dev
+    while [ $? -ne 0 ]; do
+       sleep 1
+       apt-get install -y ruby ruby-dev cmake build-essential zlib1g-dev
+    done
+    gem install bundler
+    source /home/vagrant/.nvm/nvm.sh; npm -g install yarn
+
+  SHELL
+  
+end
