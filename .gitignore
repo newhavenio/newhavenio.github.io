@@ -4,3 +4,4 @@ _site
 feed.xml
 yarn-error.log
 _bower-components
+.vagrant
