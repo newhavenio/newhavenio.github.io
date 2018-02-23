@@ -10,7 +10,7 @@
      "Josh Santos <josh@omnidapps.com>",
      "maxx1128 <maxx1128@gmail.com>",
      "Zach Morek <zmorek@gmail.com>"
-   ],
+  ],
   "license": "MIT",
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
@@ -19,7 +19,17 @@
     "mustache": "^2.3.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "bourbon": "^4.2.4",
-    "susy": "^2.2.9"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "susy": "^2.2.9",
+    "webpack": "^3.11.0"
+  },
+  "scripts": {
+    "build": "webpack"
   }
 }
