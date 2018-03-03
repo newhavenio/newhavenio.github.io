@@ -18,13 +18,13 @@ function clean {
 
 function get_current_site {
 	  echo "getting latest site"
-	  git clone --depth 1 $DEPLOY_REPO _site
+	  git clone -b gh-pages --depth 1 $DEPLOY_REPO _site || true
 }
 
 function build_site {
 	  echo "building site"
-	  bundle exec jekyll build
     npm run build
+	  bundle exec jekyll build
 }
 
 function deploy {
@@ -40,13 +40,13 @@ function deploy {
 	      exit 0
 	  fi
 
-	  cd _site
 	  git config --global user.name "Travis CI"
     git config --global user.email travis@newhaven.io
+	  cd _site
 	  git add -A
 	  git status
-	  git commit -m "Lastest site built on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to github"
-	  git push $DEPLOY_REPO master:gh-pages
+	  git commit -m "Latest site built on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to github"
+	  git push $DEPLOY_REPO gh-pages
 }
 
 

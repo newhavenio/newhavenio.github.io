@@ -2,8 +2,6 @@ language: ruby
 cache: bundler
 install:
 - bundle install
+- npm install
 script:
 - "./build.sh"
-env:
-  global:
-    secure: aGrEaTbIgLoNgEnCrYpTeDvAlUe
