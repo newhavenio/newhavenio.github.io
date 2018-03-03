@@ -5,3 +5,12 @@ install:
 - npm install
 script:
 - "./build.sh"
+deploy:
+  provider: pages
+  skip-cleanup: true
+  local-dir: _site
+  fqdn: newhaven.io
+  github-token: $DEPLOY_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  keep-history: true
+  on:
+    branch: master
