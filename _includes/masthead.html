@@ -3,6 +3,19 @@
 <div id="masthead">
   <div class="masthead-copy container-fluid">
     <h2 class="masthead-title">Welcome to {{ site.title }}</h2>
+    <div class="masthead-buttons">
+      {% for button in site.data.home-buttons %}
+      <a href="{{ button.link }}" class="btn btn-default" target="_blank">
+        <i class="fa fa-{{ button.icon }}"></i>
+        {{ button.name }}
+      </a>
+      {% endfor %}
+    </div>
+    <div class="masthead-slack">
+      You can autojoin newhavenio.slack.com here!
+      <div><script async defer src="https://newhavenio-slackin.herokuapp.com/slackin.js?large"></script></div>
+    </div>
+
     <h4 class="masthead-description">newhaven.io is...</h4>
       <ul>
         <li><a href="http://newhaven.io/blog/what-is-NewHavenIO/" rel="nofollow">connecting and supporting</a> New Haven’s technology community</li>
@@ -33,19 +46,5 @@
       <ul>
         <li>Sponsor a meetup (<em>usually between $300-$500</em>), and we’ll let you pitch to the developers.</li>
     </ul>
-
-    <div class="masthead-buttons">
-      {% for button in site.data.home-buttons %}
-      <a href="{{ button.link }}" class="btn btn-default" target="_blank">
-        <i class="fa fa-{{ button.icon }}"></i>
-        {{ button.name }}
-      </a>
-      {% endfor %}
-    </div>
-
-    <div class="masthead-slack">
-      You can autojoin newhavenio.slack.com here!
-      <div><script async defer src="https://newhavenio-slackin.herokuapp.com/slackin.js?large"></script></div>
-    </div>
   </div>
 </div>
