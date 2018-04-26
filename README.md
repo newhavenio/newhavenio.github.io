@@ -18,7 +18,9 @@ $ yarn
 
 ## Run Application Server
 
+make sure to build the webpacks bundle.js before serving
 ```
+$ npm run build
 $ jekyll serve
 ```
 
