@@ -1,0 +1,19 @@
+---
+layout: none
+---
+/* TEAM */
+Organization: NewHaven.IO
+Description: {{ site.description }}
+Source: {{ site.source_url }}
+Location: New Haven, CT
+
+/* THANKS */
+{% for contributor in site.data.contributors %}
+- {{ contributor }}
+{% endfor %}
+
+/* SITE */
+3rd Party APIs: Meetup.com, Google Analytics
+Standards: HTML5, CSS3
+Components: Webpack, NPM, Polymer, Web Components
+Software: Jekyl, Ruby
