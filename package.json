@@ -14,11 +14,11 @@
   "license": "MIT",
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
-    "bourbon": "^5.0.0",
+    "bourbon": "^4.2.4",
     "jquery": "3.2.1",
     "modernizr": "3.2.0",
     "mustache": "^2.3.0",
-    "susy": "^3.0.3"
+    "susy": "^2.2.4"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
