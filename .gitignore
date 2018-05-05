@@ -6,3 +6,5 @@ node_modules
 yarn-error.log
 _bower-components
 .vagrant
+js/bundle.js
+css/main.css
