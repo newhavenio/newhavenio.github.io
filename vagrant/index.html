@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Vagrant Development Environment - NewHaven.IO</title>
+  <meta name="thumbnail" content="../../img/home/bg.jpg" />
+  <meta property="og:image" content="../../img/home/bg.jpg"/>
+  <meta name="description" content="newhaven.io is a group of talented and passionate individuals living, working and creating in the New Haven area.
+">
+  <meta name="p:domain_verify" content="0b12e07a4feaad3b7aa48fee8ecae8db"/>
+
+  
+
+  <title>Vagrant Development Environment</title>
+  <meta name="description" content="newhaven.io is a group of talented and passionate individuals living, working and creating in the New Haven area.
+">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://newhaven.io/vagrant/">
+  <link rel="alternate" type="application/rss+xml" title="newhaven.io" href="http://newhaven.io/feed.xml">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat|Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.21/webcomponents-lite.min.js"></script>
+  <script type="text/javascript" src="/js/bundle.js" charset="utf8" ></script>
+  <script src="/js/components/meetup-utils.js"></script>
+
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <!-- From https://github.com/blog/273-github-ribbons -->
+<a class="header-ribbon" target="_blank" href="https://github.com/newhavenio/newhavenio.github.io"><img src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">newhaven.io</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          
+            <li>
+              <a href="/about/">
+                About
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/">
+                Blog
+              </a>
+            </li>
+          
+            <li>
+              <a href="/developers">
+                Developers
+              </a>
+            </li>
+          
+            <li>
+              <a href="http://groups.google.com/forum/?fromgroups#!forum/newhavenio">
+                Contact
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>
+
+
+    <div class="wrapper">
+      <div class="page-content ">
+        <div class="wrapper">
+    <div class="page-content container-fluid">
+		<div class="panel panel-default">
+
+		  <div class="panel-header">
+		    <h1 class="page-title">Vagrant Development Environment</h1>
+		  </div>
+
+		  <div class="panel-body">
+		    <h1 id="vagrant-development-environment">Vagrant Development Environment</h1>
+
+<p>This development environment is designed to allow you to start working quickly and from any OS which can install <a href="https://www.vagrantup.com/">Vagrant</a> and <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>.</p>
+
+<p>This box comes packaged with all of the dependencies necessary to build and run a local server. The box will be synced with the repository allowing for the host machine to modify the site files using any editor. Additionally, the box will have port <code class="highlighter-rouge">4000</code> forwarded so the developer may access the site on the host machine using their favorite browser.</p>
+
+<h2 id="quick-start">Quick Start</h2>
+
+<ol>
+  <li>Ensure you have <a href="https://www.vagrantup.com/">Vagrant</a> and <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> installed</li>
+  <li>Clone the repository</li>
+  <li>Navigate to this directory</li>
+  <li>Run <code class="highlighter-rouge">vagrant up</code></li>
+  <li>Run <code class="highlighter-rouge">vagrant ssh</code></li>
+  <li><code class="highlighter-rouge">cd newhavenio.github.io</code></li>
+  <li><code class="highlighter-rouge">bundle</code></li>
+  <li><code class="highlighter-rouge">yarn</code></li>
+  <li><code class="highlighter-rouge">jekyll serve --host 0.0.0.0</code></li>
+  <li>Open a web browser and visit <a href="http://localhost:4000">http://localhost:4000</a></li>
+</ol>
+
+<h2 id="halting-and-destroying-the-vm">Halting and Destroying the VM</h2>
+
+<p>You can halt the VM by running <code class="highlighter-rouge">vagrant halt</code>. This will shut it down. The next time you run <code class="highlighter-rouge">vagrant up</code> any local changes will remain.</p>
+
+<p>You can completely destroy the VM by running <code class="highlighter-rouge">vagrant destroy</code>. This will remove any local changes you’ve made to the box.</p>
+
+<p>For more details on using Vagrant, see the <a href="https://www.vagrantup.com/docs/index.html">documentation</a>.</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<ol>
+  <li><a href="https://www.vagrantup.com/">Vagrant</a></li>
+  <li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
+</ol>
+
+<h2 id="recommended-vagrant-plugins">Recommended Vagrant Plugins</h2>
+
+<h3 id="vagrant-notify-forwarder">vagrant-notify-forwarder</h3>
+
+<p><a href="https://github.com/mhallin/vagrant-notify-forwarder">vagrant-notify-forwarder</a>: A vagrant plugin that uses notify-forwarder to forward file system events from the host to the guest automatically on all shared folders.</p>
+
+<p>This is useful if your filesystem doesn’t automagically forward changes from the host to the guest.</p>
+
+<p>Install by running <code class="highlighter-rouge">vagrant plugin install vagrant-notify-forwarder</code></p>
+
+
+		  </div>
+
+		</div>
+	</div>
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="container-fluid">
+    <div class="row">
+      
+      <div class="footer-links col-sm-6 col-md-8">
+          
+            <a href="/about/">
+              About
+            </a> / 
+        
+            <a href="/blog/">
+              Blog
+            </a> / 
+        
+            <a href="/developers">
+              Developers
+            </a> / 
+        
+            <a href="http://groups.google.com/forum/?fromgroups#!forum/newhavenio">
+              Contact
+            </a>
+        
+      </div>
+
+      <div class="col-sm-6 col-md-4">
+        <a href="">
+          <h4 class="footer-heading">
+            newhaven.io
+          </h4>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/modernizr.min.js"></script>
+  <script>
+    // Makes all blog links open in a new tab
+    $('article.post a').each(function() {
+      $(this).attr('target', '_blank');
+    });
+  </script>
+</footer>
+
+
+  </body>
+
+</html>

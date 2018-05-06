@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Four Tips for Using Sass Variables - NewHaven.IO</title>
+  <meta name="thumbnail" content="../../img/home/bg.jpg" />
+  <meta property="og:image" content="../../img/home/bg.jpg"/>
+  <meta name="description" content="Sass variables help keep your CSS efficient and flexible, but they're more complex than you may think. These are four basic tips to get the most from your Sa...">
+  <meta name="p:domain_verify" content="0b12e07a4feaad3b7aa48fee8ecae8db"/>
+
+  
+
+  <title>Four Tips for Using Sass Variables</title>
+  <meta name="description" content="Sass variables help keep your CSS efficient and flexible, but they're more complex than you may think. These are four basic tips to get the most from your Sa...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://newhaven.io/blog/four-tips-sass-variables/">
+  <link rel="alternate" type="application/rss+xml" title="newhaven.io" href="http://newhaven.io/feed.xml">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat|Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.21/webcomponents-lite.min.js"></script>
+  <script type="text/javascript" src="/js/bundle.js" charset="utf8" ></script>
+  <script src="/js/components/meetup-utils.js"></script>
+
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <!-- From https://github.com/blog/273-github-ribbons -->
+<a class="header-ribbon" target="_blank" href="https://github.com/newhavenio/newhavenio.github.io"><img src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">newhaven.io</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          
+            <li>
+              <a href="/about/">
+                About
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/">
+                Blog
+              </a>
+            </li>
+          
+            <li>
+              <a href="/developers">
+                Developers
+              </a>
+            </li>
+          
+            <li>
+              <a href="http://groups.google.com/forum/?fromgroups#!forum/newhavenio">
+                Contact
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>
+
+
+    <div class="wrapper">
+      <div class="page-content ">
+        <div class="wrapper">
+    <div class="page-content container-fluid">
+		<article class="post panel panel-default" itemscope itemtype="http://schema.org/BlogPosting">
+
+		<header class="post-header">
+			<h2 class="post-title" itemprop="name headline">Four Tips for Using Sass Variables</h2>
+
+			<p class="post-meta">
+				Posted by <strong><span itemprop="author" itemscope itemtype="http://schema.org/Person">Max Antonucci </span></strong>on <strong><time datetime="2016-12-14T00:00:00+00:00" itemprop="datePublished">Dec 14, 2016</time></strong>
+			</p>
+
+		</header>
+		<hr>
+
+		  <div class="post-content" itemprop="articleBody">
+		    <p>While <a href="http://sass-lang.com/">Sass</a> brings many great functions to CSS, one of the biggest is variables. Variables mean no more <kbd>CTRL</kbd>+<kbd>F</kbd>-ing our way through stylesheets when we change a color or margin value. Putting these frequent values in one place makes managing them that much easier.</p>
+
+<p>Turns out there’s much more to Sass variables then that basic use. At least if you want to get as much out of them as possible.</p>
+
+<p>These are four basic tips to get a lot more out of Sass variables. They’ll help developers use more variables with fewer issues and write DRYer code too. If you’re relatively new to Sass and want to expand your understanding, this article’s for you.</p>
+
+<h3 id="tip-1-know-the-different-variable-types">Tip 1: Know the Different Variable Types</h3>
+
+<p>There’s Sass variable types that Javascript writers may be familiar with. The variable type directly affects how the value is called and how complex it is, so this a good starting point for learning more.</p>
+
+<h4 id="basic-variables">Basic Variables</h4>
+
+<p>Basic variables are the simplest: singular values for a CSS property. They can range from basic colors (<code class="highlighter-rouge">#FF0000</code>) or lengths (<code class="highlighter-rouge">1em</code>), to ones that hold a few words, like <code class="highlighter-rouge">1px solid black</code> for borders. Their main purpose is substituting a value for a CSS property.</p>
+
+<p>Here’s a simple example:</p>
+
+<figure class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="nv">$light-color</span><span class="p">:</span> <span class="mh">#111</span><span class="err">;</span>
+
+<span class="err">.</span><span class="na">element</span><span class="err"> { </span><span class="nl">background-color</span><span class="p">:</span> <span class="nv">$light-color</span><span class="err">;</span> <span class="err">}</span></code></pre></figure>
+
+<h4 id="list-variables">List variables</h4>
+
+<p>List variables are like Javascript arrays: they contain a list of values the code will usually loop through. If there’s several colors that only work in a group, a developer can put them in a list for more efficient use.</p>
+
+<p>Accessing a list’s values needs either an <em>@each loop</em> or <em>getting a value at its index.</em> Here’s an example of each one:</p>
+
+<figure class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// This is the list
+</span><span class="nv">$element-colors</span><span class="p">:</span> <span class="mh">#F00</span><span class="o">,</span> <span class="mh">#0F0</span><span class="o">,</span> <span class="mh">#00F</span><span class="err">;</span>
+
+<span class="c1">// This is the @each loop. In each iteration, $color is
+// the name we chose for the current value
+</span><span class="k">@each</span> <span class="nv">$color</span> <span class="n">in</span> <span class="nv">$element-colors</span> <span class="err">{</span>
+    <span class="nv">$i</span><span class="p">:</span> <span class="nf">index</span><span class="p">(</span><span class="nv">$element-colors</span><span class="o">,</span> <span class="nv">$color</span><span class="p">)</span><span class="err">;</span> <span class="o">//</span> <span class="n">This</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">list</span> <span class="n">index</span> <span class="n">of</span> <span class="n">the</span> <span class="n">color</span>
+
+    <span class="c1">// This makes use of the index and value,
+</span>    <span class="c1">// so the loop creates different selectors for each value
+</span>    <span class="err">.</span><span class="na">element</span><span class="p">:</span><span class="nf">nth-of-type</span><span class="p">(</span><span class="si">#{</span><span class="nv">$i</span><span class="si">}</span><span class="p">)</span> <span class="err">{</span> <span class="n">background-color</span><span class="o">:</span> <span class="nv">$color</span><span class="err">;</span> <span class="err">}</span>
+<span class="err">}</span>
+
+<span class="c1">// This loop would output:
+// .element:nth-of-type(1) { background-color: #F00; }
+// .element:nth-of-type(2) { background-color: #0F0; }
+// .element:nth-of-type(3) { background-color: #00F; }
+</span>
+<span class="c1">// This is calling a color by the index alone
+</span><span class="nc">.another-element</span> <span class="err">{</span>
+    
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">nth</span><span class="p">(</span><span class="nv">$element-colors</span><span class="o">,</span> <span class="m">1</span><span class="p">)</span><span class="err">;</span> <span class="o">//</span> <span class="n">returns</span> <span class="mh">#F00</span>
+<span class="err">}</span></code></pre></figure>
+
+<p>You’ll notice the start of a Sass list’s index is 1, not 0. This often throws off many people who’ve only used Javascript arrays before.</p>
+
+<p>Also note the <code class="highlighter-rouge">@each</code> loop uses the <code class="highlighter-rouge">$i</code> variable in it’s selector. Using that, or even the <code class="highlighter-rouge">$color</code> variable, is important. Otherwise it’d create the same <code class="highlighter-rouge">.element</code> selector three times, and only the last one would work. Remember to use these variables for selectors in an <code class="highlighter-rouge">@each</code> loop for this reason, and in that context reference them like this:<code class="highlighter-rouge">#{$i}</code>.</p>
+
+<h4 id="map-variables">Map Variables</h4>
+
+<p>Map variables are the most complex. They’re like Javascript objects since <strong>they store object-value pairs,</strong> and work for more complex data like this:</p>
+
+<figure class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="nv">$color-map</span><span class="p">:</span> <span class="p">(</span>
+    <span class="na">color1</span> <span class="p">:</span> <span class="mh">#F00</span><span class="o">,</span>
+    <span class="na">color2</span> <span class="p">:</span> <span class="mh">#0F0</span><span class="o">,</span>
+    <span class="na">color3</span> <span class="p">:</span> <span class="mh">#00F</span>
+<span class="o">);</span></code></pre></figure>
+
+<p>Similar to lists, <code class="highlighter-rouge">@each</code> loops are used to access the values. Developers can also access values by their specific keys. So for the different colors in this map, we could do this:</p>
+
+<figure class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// We assign names to the properties and values in the map
+</span><span class="k">@each</span> <span class="nv">$name</span><span class="o">,</span> <span class="nv">$color</span> <span class="n">in</span> <span class="nv">$color-map</span> <span class="err">{</span>
+    
+    <span class="c1">// We can use them both for more detailed selectors in the loop
+</span>    <span class="err">.</span><span class="si">#{</span><span class="nv">$name</span><span class="si">}</span><span class="na">-background</span><span class="err"> { </span><span class="nl">background-color</span><span class="p">:</span> <span class="nv">$color</span><span class="err">;</span> <span class="err">}</span>
+<span class="err">}</span>
+
+<span class="c1">// This loop would output:
+// .color1-background { background-color: #F00; }
+// .color2-background { background-color: #0F0; }
+// .color3-background { background-color: #00F; }
+</span>
+<span class="c1">// We can also use $map-get to get a certain value
+</span><span class="nc">.cool-element</span> <span class="err">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">map-get</span><span class="p">(</span><span class="nv">$color-map</span><span class="o">,</span> <span class="n">color1</span><span class="p">)</span><span class="err">;</span> <span class="o">//</span> <span class="n">Returns</span> <span class="mh">#F00</span>
+<span class="err">}</span></code></pre></figure>
+
+<p>This syntax is similar to lists and only needs a few changes for the extra value. Since developers often want a specific string for only class names, Sass maps are often used more than lists.</p>
+
+<p>Those are the essentials to the different Sass variables in this post. You can get more complex by <a href="https://www.sitepoint.com/sass-maps-vs-nested-lists/">nesting Sass lists and maps,</a>, or <a href="http://thesassway.com/intermediate/if-for-each-while">using conditionals within your loops</a>, but that’s a level of detail for another article. The rest of the tips only rely on these basics (mostly).</p>
+
+<h3 id="tip-2-know-the-different-variables-scopes">Tip 2: Know the Different Variables Scopes</h3>
+
+<p>In another parallel to Javascript variables, Sass variables have different scopes. While there’s only two official scopes, I like to think there’s three for better structure. So these three scopes, going from largest to smallest, are as follows:</p>
+
+<h4 id="global-scope">Global Scope</h4>
+
+<p>Global variables are the onces referenced the earliest in a collection of Sass files, since they’re meant for use in all of them. File(s) with global variables will output no CSS, and just declare the global variables and what they’re for. They contain universal and important values, like color, typography, responsive breakpoints, spacing units, and more.</p>
+
+<h4 id="single-file-scope">Single File Scope</h4>
+
+<p>This is the scope that isn’t technically isn’t real, but I think is useful to pretend exists. Variables with a single file scope only exist in one sass file. An example: in the styles for a thumbnail component, there’d be variables for the thumbnails padding, border, layout widths, or others. The most important thing is these are declared at the file’s start and used only in that sheet. This way it’s easy to adjust important styles for it without running through dozens or hundreds of lines of code. Just go to that file’s variables and change the values.</p>
+
+<p>Why isn’t this a real scope? Because these variables could be used by every sass partial afterward. It’s important not to do this, since it risks changes to one component accidentally affecting others and creating bugs. Single file variables should only be used in the files declaring them.</p>
+
+<h4 id="selector-scope">Selector Scope</h4>
+
+<p>Selector Scope variables are declared in a selector and can only be used there. So declaring a variable inside a class selector means it can only be used for that class’s styles (plus anything nested inside). It’s good for values used repeatedly in one selector but nowhere else, since it means better containment.</p>
+
+<p>Here’s an example of selector scopes (plus the other two scopes) being used in a few files. First we have a file dedicated to declaring global variables:</p>
+
+<figure class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// _colors.scss
+</span>
+<span class="nv">$g-white</span><span class="p">:</span> <span class="mh">#efe</span><span class="err">;</span>
+<span class="nv">$g-black</span><span class="p">:</span> <span class="mh">#111</span><span class="err">;</span></code></pre></figure>
+
+<p>Then one for a thumbnail component. Since we referenced the <code class="highlighter-rouge">_colors.scss</code> file first in our master Sass file, all these values can be used.</p>
+
+<figure class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// _thumbnail.scss
+</span>
+<span class="c1">// These are variables in the single file scope.
+// Note that global variables can be used as these values!
+// This lets devs use global values for components while maintaining the rules of file scope, which can better handle changes.
+</span><span class="nv">$thumb-border</span>  <span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nv">$g-black</span><span class="err">;</span>
+<span class="nv">$thumb-padding</span> <span class="p">:</span> <span class="m">10px</span><span class="err">;</span>
+<span class="nv">$thumb-bg</span>      <span class="p">:</span> <span class="nv">$g-white</span><span class="err">;</span>
+
+<span class="nc">.thumb__wrapper</span> <span class="err">{</span>
+    <span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="err">;</span> <span class="o">//</span> <span class="n">We</span> <span class="n">are</span> <span class="n">mostly</span> <span class="n">using</span> <span class="n">single</span> <span class="n">file</span> <span class="n">variables</span> <span class="n">here</span><span class="o">.</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="nv">$thumb-padding</span><span class="err">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="nv">$thumb-padding</span> <span class="o">/</span> <span class="m">2</span><span class="err">;</span>
+
+    <span class="nl">border</span><span class="p">:</span> <span class="nv">$thumb-border</span><span class="err">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$thumb-bg</span><span class="err">;</span>
+<span class="err">}</span>
+
+<span class="nc">.thumb__image</span> <span class="err">{</span>
+    <span class="nv">$width</span><span class="p">:</span> <span class="m">3em</span><span class="err">;</span> <span class="o">//</span> <span class="n">Since</span> <span class="n">this</span> <span class="n">is</span> <span class="n">a</span> <span class="n">value</span> <span class="n">used</span> <span class="n">multiple</span> <span class="n">times</span><span class="o">,</span> <span class="n">but</span> <span class="n">only</span> <span class="n">in</span> <span class="n">this</span> <span class="n">selector</span><span class="o">,</span> <span class="n">it</span> <span class="n">is</span> <span class="n">a</span> <span class="n">selector</span> <span class="n">variable</span><span class="o">.</span>
+
+    <span class="nl">width</span><span class="p">:</span> <span class="nv">$img-width</span><span class="err">;</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="err">;</span>
+    <span class="nl">margin-right</span><span class="p">:</span> <span class="nv">$width</span> <span class="o">/</span> <span class="m">2</span><span class="err">;</span>
+<span class="err">}</span></code></pre></figure>
+
+<h3 id="tip-3-use-a-naming-convention">Tip 3: Use a Naming Convention</h3>
+
+<p>Notice the odd variable names in the above examples? Projects usually have lots of variables in different categories, so a naming convention is great for organizing them. Good names help a variable’s scope, category, and specific purpose be known at a glance.</p>
+
+<p>Say you have the color <code class="highlighter-rouge">#fdae1d</code> and want to put it in a variable. There’s three important things the variable name should convey:</p>
+
+<ul>
+  <li>It’s orange, specifically a lighter shade</li>
+  <li>It’s one of your colors</li>
+  <li>It has a global scope.</li>
+</ul>
+
+<p>Names like <code class="highlighter-rouge">$orange</code> and <code class="highlighter-rouge">$orange-color</code> cover one or two points at most. A much better, if uglier, name would be <code class="highlighter-rouge">$g-color__orange--light</code>. This uses a naming scheme inspired by BEM to get the info across with a pattern of increasing specificity:</p>
+
+<ul>
+  <li>The first few letters are a name-space for the scope. <code class="highlighter-rouge">$g</code> obviously means global; single file and selector variables can use more specific ones, like <code class="highlighter-rouge">$thumb</code> and <code class="highlighter-rouge">$img</code> from the previous example.</li>
+  <li>After is a dash and the variable’s category, in this case the color category. If that variable is the only one in the category, the name can stop there, like our single file example names did.</li>
+  <li>If there’s more than one variable in a category, the name then includes two underscores and a basic descriptor to set it apart. For the color variable, it’s a general color name like orange. Another example is using <code class="highlighter-rouge">long</code> or <code class="highlighter-rouge">short</code> for different values in the <code class="highlighter-rouge">$g-spacing</code> category.</li>
+  <li>If there’s multiple values in that basic descriptor, like different shades of orange, then add two dashes and a more detailed modifier. This lighter shade of orange would use <code class="highlighter-rouge">--light</code>. Others could use <code class="highlighter-rouge">--dark</code> or <code class="highlighter-rouge">--faded</code>.</li>
+</ul>
+
+<p>Once you get the basics, you can usually figure out a variable’s general purpose at a glance.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">$g-breakpoint__small</code> is the global breakpoint for small screens.</li>
+  <li><code class="highlighter-rouge">$hdr-border__bottom--thin</code> is a single file variable that’s the thin version of the header’s border bottom.</li>
+  <li><code class="highlighter-rouge">$link-fontSize__large</code> is a selector variable, and controls the font size for a large link element.</li>
+</ul>
+
+<p>This method isn’t perfect. Variable names can get large, unwieldy, and harder to remember. Plus name-spaces like <code class="highlighter-rouge">$hdr-</code> are short but unclear. But the organization and clarity they give is worth it in the long run.</p>
+
+<h3 id="tip-4-combine-variables-and-loops-to-save-time">Tip 4: Combine Variables and Loops to Save Time</h3>
+
+<p>Lastly, a common mindset about variables is they’re only used to substitute values. Don’t forget they can also keep your CSS extremely DRY. In the examples list and map variable examples, I looped through values to create lots of needed CSS from just a few lines.</p>
+
+<p><strong>Don’t get so caught up in using variables for substituting values that you forget about looping.</strong></p>
+
+<p>For instance, say someone wanted to make some different button states: a default, positive, warning, and error state. The only difference is their background colors. Instead of writing each selector out, they can just loop through a map to make the classes, like this:</p>
+
+<figure class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="nv">$button-states</span><span class="p">:</span> <span class="p">(</span>
+    <span class="na">default</span>  <span class="p">:</span> <span class="no">blue</span><span class="o">,</span>
+    <span class="na">positive</span> <span class="p">:</span> <span class="no">green</span><span class="o">,</span>
+    <span class="na">warning</span>  <span class="p">:</span> <span class="no">yellow</span><span class="o">,</span>
+    <span class="na">error</span>    <span class="p">:</span> <span class="no">red</span>
+<span class="o">);</span>
+
+<span class="k">@each</span> <span class="nv">$label</span><span class="o">,</span> <span class="nv">$color</span> <span class="n">in</span> <span class="nv">$button-states</span> <span class="err">{</span>
+    
+    <span class="err">.</span><span class="na">btn--</span><span class="si">#{</span><span class="nv">$label</span><span class="si">}</span><span class="err"> { </span><span class="nl">background-color</span><span class="p">:</span> <span class="nv">$color</span><span class="err">;</span> <span class="err">}</span>
+<span class="err">}</span></code></pre></figure>
+
+<p>That’s four classes created with minimal work. All thanks to a variable and loop.</p>
+
+<p>Let’s get more ambitious. Say the default font color for buttons was white, but some of these background colors were so light it wouldn’t contrast well. We can use a conditional to test for this and change the CSS output as needed.</p>
+
+<figure class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="nv">$button-states</span><span class="p">:</span> <span class="p">(</span>
+    <span class="na">default</span>  <span class="p">:</span> <span class="no">blue</span><span class="o">,</span>
+    <span class="na">positive</span> <span class="p">:</span> <span class="no">green</span><span class="o">,</span>
+    <span class="na">warning</span>  <span class="p">:</span> <span class="no">yellow</span><span class="o">,</span>
+    <span class="na">error</span>    <span class="p">:</span> <span class="no">red</span>
+<span class="o">);</span>
+
+<span class="k">@each</span> <span class="nv">$label</span><span class="o">,</span> <span class="nv">$color</span> <span class="n">in</span> <span class="nv">$button-states</span> <span class="err">{</span>
+    
+    <span class="nc">.btn--</span><span class="si">#{</span><span class="nv">$label</span><span class="si">}</span> <span class="err">{</span>
+        <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$color</span><span class="err">;</span>
+
+        <span class="k">@if</span> <span class="p">(</span><span class="nf">lightness</span><span class="p">(</span><span class="nv">$color</span><span class="p">)</span> <span class="o">&gt;</span> <span class="m">50</span><span class="p">)</span> <span class="err">{</span> <span class="n">color</span><span class="o">:</span> <span class="no">black</span><span class="err">;</span> <span class="err">}</span>
+<span class="err">}</span><span class="o">;</span>
+    <span class="err">}</span>
+<span class="err">}</span></code></pre></figure>
+
+<p>This conditional kicks in for every loop iteration and checks its color value. If it’s too light, the font color is changed to <code class="highlighter-rouge">black</code>. If not, it stays as white. This way, <strong>Sass variables and loops write code and make simple decisions for us.</strong> Don’t forget to use this extremely useful feature whenever possible.</p>
+
+<h3 id="in-conclusion">In Conclusion</h3>
+
+<p>Sass variables are very powerful, but also have more layers than one would first think. Once one understands the different types and scopes, uses detailed names, and combines them with loops, they can start using them to their full potential. Keeping this in mind will help save time and aggravation when writing styles, and that extra energy can go towards improving the styles themselves.</p>
+
+<p>So get to know your local Sass variables more today!</p>
+
+		  </div>
+
+		</article>
+	</div>
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="container-fluid">
+    <div class="row">
+      
+      <div class="footer-links col-sm-6 col-md-8">
+          
+            <a href="/about/">
+              About
+            </a> / 
+        
+            <a href="/blog/">
+              Blog
+            </a> / 
+        
+            <a href="/developers">
+              Developers
+            </a> / 
+        
+            <a href="http://groups.google.com/forum/?fromgroups#!forum/newhavenio">
+              Contact
+            </a>
+        
+      </div>
+
+      <div class="col-sm-6 col-md-4">
+        <a href="">
+          <h4 class="footer-heading">
+            newhaven.io
+          </h4>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/modernizr.min.js"></script>
+  <script>
+    // Makes all blog links open in a new tab
+    $('article.post a').each(function() {
+      $(this).attr('target', '_blank');
+    });
+  </script>
+</footer>
+
+
+  </body>
+
+</html>

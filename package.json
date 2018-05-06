@@ -1,0 +1,35 @@
+{
+  "name": "newhavenio.github.io",
+  "version": "2.0.0",
+  "main": "index.html",
+  "repository": "git@github.com:newhavenio/newhavenio.github.io.git",
+  "contributors": [
+    "Brady Sutton <bsutt123@gmail.com>",
+    "Dan Bernier <danbernier@gmail.com>",
+    "Joel Nimety <jnimety@gmail.com>",
+    "Josh Santos <josh@omnidapps.com>",
+    "maxx1128 <maxx1128@gmail.com>",
+    "Zach Morek <zmorek@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "bourbon": "^4.2.4",
+    "jquery": "3.2.1",
+    "modernizr": "3.2.0",
+    "mustache": "^2.3.0",
+    "susy": "^2.2.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "webpack": "^3.11.0"
+  },
+  "scripts": {
+    "build": "webpack"
+  }
+}

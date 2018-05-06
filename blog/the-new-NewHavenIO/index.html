@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Welcome to the new NewHaven.IO! - NewHaven.IO</title>
+  <meta name="thumbnail" content="../../img/home/bg.jpg" />
+  <meta property="og:image" content="../../img/home/bg.jpg"/>
+  <meta name="description" content="On behalf of all the other NewHaven.IO developers, I welcome you to the new NewHaven.IO website. So at a meetup last last year, we decided to revamp the site...">
+  <meta name="p:domain_verify" content="0b12e07a4feaad3b7aa48fee8ecae8db"/>
+
+  
+
+  <title>Welcome to the new NewHaven.IO!</title>
+  <meta name="description" content="On behalf of all the other NewHaven.IO developers, I welcome you to the new NewHaven.IO website. So at a meetup last last year, we decided to revamp the site...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://newhaven.io/blog/the-new-NewHavenIO/">
+  <link rel="alternate" type="application/rss+xml" title="newhaven.io" href="http://newhaven.io/feed.xml">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat|Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.21/webcomponents-lite.min.js"></script>
+  <script type="text/javascript" src="/js/bundle.js" charset="utf8" ></script>
+  <script src="/js/components/meetup-utils.js"></script>
+
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <!-- From https://github.com/blog/273-github-ribbons -->
+<a class="header-ribbon" target="_blank" href="https://github.com/newhavenio/newhavenio.github.io"><img src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">newhaven.io</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          
+            <li>
+              <a href="/about/">
+                About
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/">
+                Blog
+              </a>
+            </li>
+          
+            <li>
+              <a href="/developers">
+                Developers
+              </a>
+            </li>
+          
+            <li>
+              <a href="http://groups.google.com/forum/?fromgroups#!forum/newhavenio">
+                Contact
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>
+
+
+    <div class="wrapper">
+      <div class="page-content ">
+        <div class="wrapper">
+    <div class="page-content container-fluid">
+		<article class="post panel panel-default" itemscope itemtype="http://schema.org/BlogPosting">
+
+		<header class="post-header">
+			<h2 class="post-title" itemprop="name headline">Welcome to the new NewHaven.IO!</h2>
+
+			<p class="post-meta">
+				Posted by <strong><span itemprop="author" itemscope itemtype="http://schema.org/Person">Max Antonucci </span></strong>on <strong><time datetime="2016-07-23T00:00:00+00:00" itemprop="datePublished">Jul 23, 2016</time></strong>
+			</p>
+
+		</header>
+		<hr>
+
+		  <div class="post-content" itemprop="articleBody">
+		    <p>On behalf of all the other NewHaven.IO developers, I welcome you to the new NewHaven.IO website. So at <a href="http://www.meetup.com/newhavenio/events/225516517/">a meetup last last year,</a> we decided to revamp the site. After much discussion in person and over our Slack group, the work is finally done.</p>
+
+<p>This post is a brief look at the big changes we’ve made, and how they’ll make it easy for members to contribute to the site. Our big changes were partly inspired by <a href="http://techcorridor.io/">TechCorridor.IO</a>, who transformed their site similarly before our own.</p>
+
+<h3 id="jekyll-for-better-collaboration">Jekyll for Better Collaboration</h3>
+
+<p>Our old site was built on MongoDB, a powerful NoSQL database known for speed and ease of setup. But while MongoDB is great, it was ultimately decided to move to Jekyll.</p>
+
+<figure class=" post-img post-half-image right">
+	<img class="image-caption-img" src=" /img/posts/welcome_newhavenio/jekyll-logo.png " alt="  " />
+	<figcaption></figcaption>
+</figure>
+
+<p>This was a big change, as it means moving from a MongoDB database to none at all. Jekyll is a static-site generator - it takes basic files and compiles a full website from them. Whenever a change is made, Jekyll compiles a new one again and serves it up for visitors.</p>
+
+<p>The big reason for this was <em>collaboration.</em> Github offers free Jekyll hosting. This makes it incredibly easy for different developers to find and contribute to these sites. Want to make a style change? Write a blog post? Tweak some javascript? Just fork the repo, make your changes, and request to merge it. Once they’re approved, your changes are merged and you’re all set.</p>
+
+<p>Now it’s easier for members, old and new, to add to the NewHaven.IO site if they chose to. Posts can be about programming and technology in general, recaps of meetings they attended, their experiences at different tech events, or just links they want to share.</p>
+
+<h3 id="from-gumby-to-bootstrap">From Gumby to Bootstrap</h3>
+
+<p>The previous site was built on Gumby, a responsive web framework by the great folks at Digital Surgeons. It was sadly retired, so we had to switch to Bootstrap.</p>
+
+<p>Bootstrap was a clear choice to us since it’s one of, if not the, most popular and effective web frameworks out there. For a site where lots of different developers with different focuses working on it, using a well-known framework like Bootstrap makes maintenance (and new ideas) easy and straightforward to add to the site’s repo.</p>
+
+<h3 id="in-conclusion">In Conclusion</h3>
+
+<p>As you can see, our big goal with these changes were making it easier for developers to contribute to the site. Moving the site to Jekyll makes it easy and convenient for developers to add posts or change code through Github. Using the popular framework Bootstrap also makes it less difficult for developers to understand and add to the site’s code.</p>
+
+<p>NewHaven.IO’s community is already strong, but this new site aims to bring it a little closer than before. The barriers to take an active role in the group are lower than before. So all those interested in contributing a blog post or improving the site’s code, please go for it! This new site is built to make contributing that much easier.</p>
+
+		  </div>
+
+		</article>
+	</div>
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="container-fluid">
+    <div class="row">
+      
+      <div class="footer-links col-sm-6 col-md-8">
+          
+            <a href="/about/">
+              About
+            </a> / 
+        
+            <a href="/blog/">
+              Blog
+            </a> / 
+        
+            <a href="/developers">
+              Developers
+            </a> / 
+        
+            <a href="http://groups.google.com/forum/?fromgroups#!forum/newhavenio">
+              Contact
+            </a>
+        
+      </div>
+
+      <div class="col-sm-6 col-md-4">
+        <a href="">
+          <h4 class="footer-heading">
+            newhaven.io
+          </h4>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/modernizr.min.js"></script>
+  <script>
+    // Makes all blog links open in a new tab
+    $('article.post a').each(function() {
+      $(this).attr('target', '_blank');
+    });
+  </script>
+</footer>
+
+
+  </body>
+
+</html>
