@@ -8,3 +8,5 @@ node_modules
 yarn-error.log
 _bower-components
 .vagrant
+bundle.js
+main.css
