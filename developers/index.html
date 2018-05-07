@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-  <title>newhaven.io</title>
+  <title>Developers - NewHaven.IO</title>
   <meta name="thumbnail" content="../../img/home/bg.jpg" />
   <meta property="og:image" content="../../img/home/bg.jpg"/>
   <meta name="description" content="newhaven.io is a group of talented and passionate individuals living, working and creating in the New Haven area.
@@ -15,12 +15,12 @@
 
   
 
-  <title>newhaven.io</title>
+  <title>Developers</title>
   <meta name="description" content="newhaven.io is a group of talented and passionate individuals living, working and creating in the New Haven area.
 ">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://newhaven.io/">
+  <link rel="canonical" href="http://newhaven.io/developers/">
   <link rel="alternate" type="application/rss+xml" title="newhaven.io" href="http://newhaven.io/feed.xml">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link href='https://fonts.googleapis.com/css?family=Montserrat|Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -93,90 +93,60 @@
 
     <div class="wrapper">
       <div class="page-content ">
-        <link rel="import" href="/js/components/meetup-events.html">
-<link rel="import" href="/js/components/meetup-event-card.html">
+        <div class="wrapper">
+    <div class="page-content container-fluid">
+		<div class="panel panel-default">
 
-<div class="home">
+		  <div class="panel-header">
+		    <h1 class="page-title">Developers</h1>
+		  </div>
 
-<link rel="import" href="/js/components/slack-button.html">
+		  <div class="panel-body">
+		    <link rel="import" href="/js/components/meetup-paginator.html">
+<link rel="import" href="/js/components/meetup-developers.html">
+<link rel="import" href="/js/components/meetup-developer-card.html">
 
-<div id="masthead">
-  <div class="masthead-copy container-fluid">
-    <h2 class="masthead-title">Welcome to newhaven.io</h2>
-    <div class="masthead-buttons">
-      
-      <a href="http://www.twitter.com/newhavenio" class="btn btn-default" target="_blank">
-        <i class="fa fa-twitter"></i>
-        newhavenio
-      </a>
-      
-      <a href="http://groups.google.com/forum/?fromgroups#!forum/newhavenio" class="btn btn-default" target="_blank">
-        <i class="fa fa-envelope"></i>
-        Google Group
-      </a>
-      
-      <a href="http://www.meetup.com/newhavenio/" class="btn btn-default" target="_blank">
-        <i class="fa fa-calendar-o"></i>
-        Meetup.com
-      </a>
-      
-      <a href="https://secure.meetup.com/newhavenio/contribute/" class="btn btn-default" target="_blank">
-        <i class="fa fa-usd"></i>
-        Contribute
-      </a>
-      
-      <a href="bitcoin:1NDhTt48EQJDQj6Eiz9iwCQ2K62WsZZY8B" class="btn btn-default" target="_blank">
-        <i class="fa fa-bitcoin"></i>
-        Contribute
-      </a>
-      
-    </div>
-    <div class="masthead-slack">
-      You can autojoin newhavenio.slack.com here!
-      <div><script async defer src="https://newhavenio-slackin.herokuapp.com/slackin.js?large"></script></div>
-    </div>
+<div id="foo" class="developers-page">
+    <meetup-paginator
+        id="developers-paginator"
+        per-page="40">
+    </meetup-paginator>
 
-    <h4 class="masthead-description">newhaven.io is...</h4>
-      <ul>
-        <li><a href="http://newhaven.io/blog/what-is-NewHavenIO/" rel="nofollow">connecting and supporting</a> New Haven’s technology community</li>
-        <li>self-managed by volunteers (and always looking for more!)</li>
-        <li>a 501(c)(6) non-profit</li>
-        <li>about tech. all tech. your tech.</li>
-      </ul>
-      <i>How can we help you?</i>
-      <hr>
-      <p>If you’re a <strong>developer</strong>:</p>
-      <ul>
-        <li><a href="https://www.meetup.com/newhavenio/" rel="nofollow">Community</a> (socials)</li>
-        <li>Grow: A chance to learn, to mentor, to present</li>
-        <li><a href="https://newhavenio-slackin.herokuapp.com/" rel="nofollow">Network</a>: find a new team, a new teammate, or a co-founder</li>
-      </ul>
-      <p>If you’re a local software <strong>meetup group</strong>:</p>
-      <ul>
-        <li>Wider outreach, visibility</li>
-        <li>Access to meeting spaces</li>
-        <li>Logistical help</li>
-      </ul>
-      <p>If you’re a software <strong>company</strong>:</p>
-      <ul>
-        <li>Recruiting, hiring</li>
-        <li>A way for your employees to grow and learn</li>
-      </ul>
-      <p>If you’re an <strong>entrepreneur</strong>:</p>
-      <ul>
-        <li>Sponsor a meetup (<em>usually between $300-$500</em>), and we’ll let you pitch to the developers.</li>
-    </ul>
-  </div>
+    <meetup-developers
+        id="developers"
+        api-type="jsonp"
+        max-developers="40">
+    </meetup-developers>
 </div>
 
+<script>
+    (function () {
+        var maybe = Meetup.maybe;
+        var developersList = document.getElementById('developers');
+        var paginator = document.getElementById('developers-paginator');
 
-<section id="meetup-events" class="container-fluid">
-    <meetup-events
-        id="events"
-        max-events="5">
-    </meetup-events>
-</section>
+        var currentPage = (function () {
+            var query = document.location.search;
+            var page = maybe(query.match(/[?&]page=(\d+)/)).get(1).value;
+            return parseInt(page, 10) || 1;
+        }());
 
+        developersList.addEventListener('refresh', function (evt) {
+            paginator.data = {
+                totalCount: maybe(evt).get('detail.meta.total_count').value,
+                count: evt.target.getAttribute('max-developers'),
+                page: currentPage
+            };
+        });
+
+        developersList.setAttribute('page', currentPage);
+    }());
+</script>
+
+		  </div>
+
+		</div>
+	</div>
 </div>
 
       </div>

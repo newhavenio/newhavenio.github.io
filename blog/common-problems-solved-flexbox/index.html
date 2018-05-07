@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Common Front-end Problems Solved with Flexbox - NewHaven.IO</title>
+  <meta name="thumbnail" content="../../img/home/bg.jpg" />
+  <meta property="og:image" content="../../img/home/bg.jpg"/>
+  <meta name="description" content="Flexbox has helped solve many layout issues that were once hacked around. These are four more common layout dilemmas Flexbox now helps solve.">
+  <meta name="p:domain_verify" content="0b12e07a4feaad3b7aa48fee8ecae8db"/>
+
+  
+
+  <title>Common Front-end Problems Solved with Flexbox</title>
+  <meta name="description" content="Flexbox has helped solve many layout issues that were once hacked around. These are four more common layout dilemmas Flexbox now helps solve.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://newhaven.io/blog/common-problems-solved-flexbox/">
+  <link rel="alternate" type="application/rss+xml" title="newhaven.io" href="http://newhaven.io/feed.xml">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat|Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.21/webcomponents-lite.min.js"></script>
+  <script type="text/javascript" src="/js/bundle.js" charset="utf8" ></script>
+  <script src="/js/components/meetup-utils.js"></script>
+
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <!-- From https://github.com/blog/273-github-ribbons -->
+<a class="header-ribbon" target="_blank" href="https://github.com/newhavenio/newhavenio.github.io"><img src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">newhaven.io</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          
+            <li>
+              <a href="/about/">
+                About
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/">
+                Blog
+              </a>
+            </li>
+          
+            <li>
+              <a href="/developers">
+                Developers
+              </a>
+            </li>
+          
+            <li>
+              <a href="http://groups.google.com/forum/?fromgroups#!forum/newhavenio">
+                Contact
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>
+
+
+    <div class="wrapper">
+      <div class="page-content ">
+        <div class="wrapper">
+    <div class="page-content container-fluid">
+		<article class="post panel panel-default" itemscope itemtype="http://schema.org/BlogPosting">
+
+		<header class="post-header">
+			<h2 class="post-title" itemprop="name headline">Common Front-end Problems Solved with Flexbox</h2>
+
+			<p class="post-meta">
+				Posted by <strong><span itemprop="author" itemscope itemtype="http://schema.org/Person">Max Antonucci </span></strong>on <strong><time datetime="2016-11-04T00:00:00+00:00" itemprop="datePublished">Nov 4, 2016</time></strong>
+			</p>
+
+		</header>
+		<hr>
+
+		  <div class="post-content" itemprop="articleBody">
+		    <p>As antsy as I am about <a href="http://gridbyexample.com/">CSS Grid</a> getting full browser support someday, until then I have Flexbox for company. While Flexbox is more for component layouts, not site layouts, it still has uses aplenty. Developers have found <a href="https://philipwalton.github.io/solved-by-flexbox/">solutions to many long-standing issues</a> that were previously hacked around, and there’s still more out there.</p>
+
+<p>This post lists four common issues I’ve faced in front-end development that Flexbox has mostly or completely solved for me. Flexbox (with prefixes) has <a href="http://caniuse.com/#search=flexbox">almost universal browser support</a>, so there’s little keeping front-end devs from using them. I hope you find them, and the included examples, useful!</p>
+
+<p><em>(Small warning: this post assumes an understanding of <a href="https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties">Flexbox’s basics.</a>)</em></p>
+
+<h3 id="responsive-logo-and-title-pairing">Responsive Logo and Title Pairing</h3>
+
+<p>A common annoyance that never went away was pairing a logo and title. Ideally a site wants them both to be center aligned, the logo a constant size with the title taking up the remaining space, and to stay this way on smaller screens. <strong>In other words, the logo and title are always vertically-aligned, regardless of screen size.</strong></p>
+
+<p>But any time I aimed for this, especially for smaller screens, it required any number of workaround: absolute positioning, floating, overly-precise breakpoints, or giving up and using a single image instead.</p>
+
+<p>Flexbox makes this pairing easy with some basic features. Just use <code class="highlighter-rouge">align-items: center</code> for the container and set the logo to <code class="highlighter-rouge">flex: 0 0 auto</code>. The simplicity has another bonus, making it easier to customize for more complex logo-title pairings.</p>
+
+<!-- Logo Example -->
+<p data-height="302" data-theme-id="0" data-slug-hash="MjMeGY" data-default-tab="result" data-user="max1128" data-embed-version="2" data-pen-title="Flexbox Example - Center-aligned Logo" data-preview="true" class="codepen">See the Pen <a href="http://codepen.io/max1128/pen/MjMeGY/">Flexbox Example - Center-aligned Logo</a> by Maxwell Antonucci (<a href="http://codepen.io/max1128">@max1128</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async="" src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p><strong>Note:</strong> <em>you’ll likely need to resize your screen for the full effect.</em></p>
+
+<h3 id="rows-of-articles-with-equal-heights">Rows of Articles with Equal Heights</h3>
+
+<p>Any site with articles, whether a major news site or a simple blog, has likely had this issue: laying out large groups of articles.</p>
+
+<p>A common article archive page will have three things: a title, excerpt, and image. Making a basic grid for these seems easy, but not in the very likely scenario the elements in each article have different heights. <strong>Having a neat layout for these articles suddenly gets more complicated, since it needs to work the same despite all the possible sizes.</strong></p>
+
+<p>Flexbox helps since it actively adjusts not just an individual item’s layout, but the entire row’s layout, based on the content.</p>
+
+<p>Different heights? Flexbox will add in just enough extra space. Items don’t fill up the whole row? Flexbox will move or resize them as needed. Have complicated layouts for smaller screens? Flexbox can work with and without media query styles.</p>
+
+<p>Below is just one example, where every article in each row is the same height, and the images are at the bottom of each. It does so by using <code class="highlighter-rouge">flex-direction: column</code> so the items stack vertically, and setting <code class="highlighter-rouge">margin-top: auto</code> on the image so it’s pushed down. The articles are also laid out using Flexbox to keep their heights the same and fill up any extra space.</p>
+
+<p>The result: a simple, neat layout that works no matter the size of the titles, excerpts, and images, and for all screen sizes. One flaw is when height differences between articles are too high, things can look awkward. But it’s still a great improvement over most similar, non-Flexbox layouts.</p>
+
+<!-- Article Height Example -->
+<p data-height="372" data-theme-id="0" data-slug-hash="yadJMd" data-default-tab="result" data-user="max1128" data-embed-version="2" data-pen-title="Flexbox Example - Article Heights" data-preview="true" class="codepen">See the Pen <a href="http://codepen.io/max1128/pen/yadJMd/">Flexbox Example - Article Heights</a> by Maxwell Antonucci (<a href="http://codepen.io/max1128">@max1128</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async="" src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p><strong>Bonus:</strong> <em>Want to center the excerpts in the extra space? In the Sass, remove the margin for <code class="highlighter-rouge">.p-article__img</code>, and uncomment the line in <code class="highlighter-rouge">.p-article</code>.</em></p>
+
+<h3 id="simple-alternating-orders-of-content">Simple Alternating Orders of Content</h3>
+
+<p>One way to break of monotony of lists is little changes in the display. For example, with a long list of images paired with text, why not alternate their placements?</p>
+
+<p>However, doing so means changing the HTML for every other article. This is a challenge for both accessibility and generating the content. <strong>Ideally, one would want to visually change the order without literally doing so.</strong></p>
+
+<p>Flexbox has a way. For this straightforward example, select every even (or odd) item and use <code class="highlighter-rouge">flex-direction: reverse</code> to change the order. They’ll visually switch around without touching the HTML!</p>
+
+<!-- Alternating Article Display Example  -->
+<p data-height="370" data-theme-id="0" data-slug-hash="gwNMBd" data-default-tab="result" data-user="max1128" data-embed-version="2" data-pen-title="Flexbox Example - Alternating Displays" data-preview="true" class="codepen">See the Pen <a href="http://codepen.io/max1128/pen/gwNMBd/">Flexbox Example - Alternating Displays</a> by Maxwell Antonucci (<a href="http://codepen.io/max1128">@max1128</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async="" src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="flexible-item-highlighting">Flexible Item Highlighting</h3>
+
+<p>One common issue I’ve faced before is with highlighted items in a grid. Items you want to draw special attention to, in this case by making them larger, but it risks disrupting the layout. In most cases I’d need to code the grid around a specific location for highlighted items to go. <strong>But what about grids where highlighted items, that were sized differently, could be located anywhere?</strong></p>
+
+<p>Some creative Flexbox work shows how. One just needs to change the <code class="highlighter-rouge">flex-basis</code> and <code class="highlighter-rouge">flex-grow</code> properties for highlighted items, which respectively control the minimum width of the item, and the percentage of extra space it takes up.</p>
+
+<p>Let’s see this in the below example of several social links. Regular links have a <code class="highlighter-rouge">flex-basis</code> of 5em and a <code class="highlighter-rouge">flex-grow</code> of 1. Highlighted items, meanwhile, have a <code class="highlighter-rouge">flex-basis</code> of 8em and a <code class="highlighter-rouge">flex-grow</code> of 8. This means highlighted items take up 3 more ems of space in the beginning, and get 8x as much of the leftover space to fill up each row. That, plus a few other style changes, makes them stand out from all the other icons. These classes can be put on any number of links in any place. They’ll adjust as needed, giving a lot more control over their highlighting.</p>
+
+<!-- Group of Icon Links Example -->
+<p data-height="265" data-theme-id="0" data-slug-hash="yadJWY" data-default-tab="result" data-user="max1128" data-embed-version="2" data-pen-title="Flexbox Example - Icon Collection" data-preview="true" class="codepen">See the Pen <a href="http://codepen.io/max1128/pen/yadJWY/">Flexbox Example - Icon Collection</a> by Maxwell Antonucci (<a href="http://codepen.io/max1128">@max1128</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async="" src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p>Here’s a more practical example I forked a while back: an image gallery. This makes it easier to emphasize some photos without disrupting the layout. They use more space while the other photos always adjust and position accordingly.</p>
+
+<!-- Forked Gallery Example -->
+<p data-height="422" data-theme-id="0" data-slug-hash="pjbpWw" data-default-tab="result" data-user="max1128" data-embed-version="2" data-pen-title="A Better Responsive Image Gallery With Flexbox" data-preview="true" class="codepen">See the Pen <a href="http://codepen.io/max1128/pen/pjbpWw/">A Better Responsive Image Gallery With Flexbox</a> by Maxwell Antonucci (<a href="http://codepen.io/max1128">@max1128</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async="" src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="in-conclusion">In Conclusion</h4>
+
+<p>Flexbox will continue to be a very useful force in the front-end, even as newer specs like CSS Grid arrive. These examples are just a few of its many uses for solving problems old and new. Expect new ones to keep popping up every now and then. Just today at work, a layout issue with some tabs I’d struggled with for an hour was solved in ten minutes thanks to Flexbox.</p>
+
+<p>So keep these examples, and any in the future, in mind going forward. Flexbox isn’t going anywhere, and for good reason.</p>
+
+
+		  </div>
+
+		</article>
+	</div>
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="container-fluid">
+    <div class="row">
+      
+      <div class="footer-links col-sm-6 col-md-8">
+          
+            <a href="/about/">
+              About
+            </a> / 
+        
+            <a href="/blog/">
+              Blog
+            </a> / 
+        
+            <a href="/developers">
+              Developers
+            </a> / 
+        
+            <a href="http://groups.google.com/forum/?fromgroups#!forum/newhavenio">
+              Contact
+            </a>
+        
+      </div>
+
+      <div class="col-sm-6 col-md-4">
+        <a href="">
+          <h4 class="footer-heading">
+            newhaven.io
+          </h4>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/modernizr.min.js"></script>
+  <script>
+    // Makes all blog links open in a new tab
+    $('article.post a').each(function() {
+      $(this).attr('target', '_blank');
+    });
+  </script>
+</footer>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Making a Portfolio Page with Jekyll - NewHaven.IO</title>
+  <meta name="thumbnail" content="../../img/home/bg.jpg" />
+  <meta property="og:image" content="../../img/home/bg.jpg"/>
+  <meta name="description" content="Jekyll is one of the most popular choices for coders making their personal websites. It’s simple to manage, easy to make blog posts and other content, and ea...">
+  <meta name="p:domain_verify" content="0b12e07a4feaad3b7aa48fee8ecae8db"/>
+
+  
+
+  <title>Making a Portfolio Page with Jekyll</title>
+  <meta name="description" content="Jekyll is one of the most popular choices for coders making their personal websites. It’s simple to manage, easy to make blog posts and other content, and ea...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://newhaven.io/blog/creating-jekyll-portfolio-page/">
+  <link rel="alternate" type="application/rss+xml" title="newhaven.io" href="http://newhaven.io/feed.xml">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat|Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.21/webcomponents-lite.min.js"></script>
+  <script type="text/javascript" src="/js/bundle.js" charset="utf8" ></script>
+  <script src="/js/components/meetup-utils.js"></script>
+
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <!-- From https://github.com/blog/273-github-ribbons -->
+<a class="header-ribbon" target="_blank" href="https://github.com/newhavenio/newhavenio.github.io"><img src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">newhaven.io</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          
+            <li>
+              <a href="/about/">
+                About
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/">
+                Blog
+              </a>
+            </li>
+          
+            <li>
+              <a href="/developers">
+                Developers
+              </a>
+            </li>
+          
+            <li>
+              <a href="http://groups.google.com/forum/?fromgroups#!forum/newhavenio">
+                Contact
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>
+
+
+    <div class="wrapper">
+      <div class="page-content ">
+        <div class="wrapper">
+    <div class="page-content container-fluid">
+		<article class="post panel panel-default" itemscope itemtype="http://schema.org/BlogPosting">
+
+		<header class="post-header">
+			<h2 class="post-title" itemprop="name headline">Making a Portfolio Page with Jekyll</h2>
+
+			<p class="post-meta">
+				Posted by <strong><span itemprop="author" itemscope itemtype="http://schema.org/Person">Max Antonucci </span></strong>on <strong><time datetime="2016-09-02T00:00:00+00:00" itemprop="datePublished">Sep 2, 2016</time></strong>
+			</p>
+
+		</header>
+		<hr>
+
+		  <div class="post-content" itemprop="articleBody">
+		    <p><a href="http://jekyllrb.com/">Jekyll</a> is one of the most popular choices for coders making their personal websites. It’s simple to manage, easy to make blog posts and other content, and each Github account has <a href="https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/">free hosting and one free URL for Jekyll sites</a>. I set up my own personal website this way and only had to buy a new domain name.</p>
+
+<p>One of the most important parts of one’s is their portfolio for showing off their work. Making a Jekyll portfolio where each item just links somewhere else is easy. But what about giving portfolio items their own pages? They’d be great for discussing the workflow used, tools utilized, and challenges overcome.</p>
+
+<p>In other words, an even better way to show off one’s work!</p>
+
+<p>This is a step-by-step guide for making this kind of portfolio in Jekyll. Great for coders who want pages dedicated to going into detail about the amazing work they’ve done.</p>
+
+<p>If you’re unfamiliar with Jekyll’s basics I recommend <a href="http://jekyllrb.com/docs/home/">reading their docs</a> first, as this article assumes you have a basic knowledge of configuring and running it.</p>
+
+<h3 id="add-the-collection-to-the-config-file">Add the Collection to the config file</h3>
+
+<p>The first step is making a <a href="https://jekyllrb.com/docs/collections/">Jekyll collection</a>. Collections are like posts can be used for things like team members or other custom content. In this case, they’re for a portfolio.</p>
+
+<p>Like all important Jekyll things, making a collection starts in the <code class="highlighter-rouge">_config.yml</code> file. Creating a basic portfolio is as simple as adding the following:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">collections:
+  portfolio</code></pre></figure>
+
+<p>Jekyll also lets you make settings for each collection. For our portfolio collection, we want each item to have it’s own page. We just need to add the following:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">collections:
+  portfolio:
+    output: true
+    permalink: /portfolio/:path/</code></pre></figure>
+
+<p>The <code class="highlighter-rouge">output</code> property tells Jekyll that each file creates its own page. The <code class="highlighter-rouge">permalink</code> sets the default permalink path. Here it’d start off with <code class="highlighter-rouge">www.yoursite.com/portfolio/</code>, followed by the file name.</p>
+
+<h3 id="create-a-collection-folder-and-portfolio-files">Create a collection folder and portfolio files</h3>
+
+<p>Now that Jekyll is looking for our portfolio items, we just need to make them. Add a <code class="highlighter-rouge">_portfolio</code> folder to your project and start adding them there.</p>
+
+<p>Jekyll collection items are markdown files and can have any name. I recommend naming them similar to posts since they’re easier to organize: the date, following by the title, all lowercase and separated by dashes. So an example is <code class="highlighter-rouge">2016-08-25-my-portfolio-item.md</code>.</p>
+
+<p>The most important part of each portfolio item is the front matter on top, as it controls the file metadata. You can add any metadata you want, but we’ll focus on the basics: the title and layout.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">---
+layout: post
+title: "Portfolio Item 1"
+---</code></pre></figure>
+
+<ol>
+  <li>The layout is the HTML your post will be put into. These are in the <code class="highlighter-rouge">templates</code> folder, but that’s another post. Just know every post and collection file needs a layout. Otherwise none of your site assets would be used and you’d get plain HTML.</li>
+  <li>The title is usually the <code class="highlighter-rouge">&lt;title&gt;</code> element, the page header, and sometimes other parts of the page layout.</li>
+</ol>
+
+<h3 id="loop-through-your-portfolio-info">Loop through your portfolio info</h3>
+
+<p>Now that we have our portfolio content, we need to reference it in our pages. In any Jekyll page, you can loop through the collection data using the Liquid syntax, similar to looping through blog posts. If we just wanted to show all our Portfolio item titles, it’d look like this:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">{% for portfolio in site.portfolio %}
+  <span class="nt">&lt;h2&gt;</span>
+    {{ portfolio.title }}
+  <span class="nt">&lt;/h2&gt;</span>
+{% endfor %}</code></pre></figure>
+
+<p>This just tells Jekyll to go through each post, and put the <code class="highlighter-rouge">title</code> value from each’s front matter in header tags. Jekyll also lets you use other variables outside of front matter ones, a few of which we’ll use in the next step.</p>
+
+<h3 id="add-more-html-to-your-loop">Add more HTML to your loop</h3>
+
+<p>Here’s the best part: adding more HTML tags and classes for the portfolio items. This turns it from plain text into an actual portfolio page.</p>
+
+<p>Let’s say we’re using Bootstrap for our site and want to put each portfolio piece in a Bootstrap panel. They’ll show the title, an excerpt, and link to the page. We just need to copy Bootstrap’s panel HTML, replace the content with our own variables, and put them in a row.</p>
+
+<p>So the basic HTML looks like this:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+
+  {% for portfolio in site.portfolio %}
+    
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ portfolio.url | prepend: site.baseurl }}"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-12 col-sm-6 col-md-4"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel panel-primary"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel-heading"</span><span class="nt">&gt;</span>
+              {{ portfolio.title }}
+          <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel-body"</span><span class="nt">&gt;</span>
+            {{ portfolio.excerpt }}
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+
+  {% endfor %}
+
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<p>You can see the variables from our front matter, such as <code class="highlighter-rouge">{{ portfolio.title }}</code>. <code class="highlighter-rouge">url</code> and <code class="highlighter-rouge">excerpt</code> are variables Jekyll makes for us. So using your portfolio item’s info is simple and easy to customize.</p>
+
+<p>You may notice the <code class="highlighter-rouge">url</code> variable is written slightly differently, with <code class="highlighter-rouge">prepend: site.baseurl</code>. This is the Liquid templating engine, which can add simple filters or changes to variables. Here it’s adding the site’s URL from our <code class="highlighter-rouge">config.yml</code> file.</p>
+
+<p>The resulting page from all this is below, which is plain but functional:</p>
+
+<figure class=" post-img post-img">
+	<img class="image-caption-img" src=" /img/posts/jekyll-portfolio/portfolio-example.png " alt="  " />
+	<figcaption></figcaption>
+</figure>
+
+<p>Clicking on one of the panels takes you to a portfolio page:</p>
+
+<figure class=" post-img post-img">
+	<img class="image-caption-img" src=" /img/posts/jekyll-portfolio/portfolio-page-example.png " alt="  " />
+	<figcaption></figcaption>
+</figure>
+
+<h3 id="add-conditional-for-external-links">Add conditional for external links</h3>
+
+<p>Let’s add a curve ball: say you don’t want every portfolio item to have its own page. Some are posts you’ve written for others, or project pages that are self-explanatory. Plus you may not have time to write a post for everything. So you want the option to just link something to a different URL entirely.</p>
+
+<p>Thankfully Jekyll makes this easy.</p>
+
+<p>The first step is going to these posts and adding this to the front matter.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">---
+layout: post
+title: "Portfolio Item 2"
+
+ext_url: "http://www.external-portfolio-item.com/"
+---</code></pre></figure>
+
+<p>Now we need to use this in our HTML with some conditionals. We only need to use this variable where the link goes, and only when it has a value. Anyone familiar with <code class="highlighter-rouge">if...else...</code> Javascript statements will find this familiar.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{% if portfolio.ext_url %} {{ portfolio.ext_url }} {% else %} {{ portfolio.url | prepend: site.baseurl }} {% endif %}"</span> <span class="err">{%</span> <span class="na">if</span> <span class="na">portfolio</span><span class="err">.</span><span class="na">ext_url</span> <span class="err">%}</span><span class="na">target=</span><span class="s">"_blank"</span><span class="err">{%</span> <span class="na">endif</span> <span class="err">%}</span><span class="nt">&gt;</span>
+  ...
+<span class="nt">&lt;/a&gt;</span></code></pre></figure>
+
+<p>Two conditionals are being used here:</p>
+
+<ol>
+  <li>If a post has an external URL, the portfolio links to that. Otherwise, it links to its separate page.</li>
+  <li>If there’s an external URL, it adds <code class="highlighter-rouge">target="_blank"</code> so it opens in a new tab.</li>
+</ol>
+
+<p>And with that, you can now add large and small projects to your portfolio!</p>
+
+<h4 id="in-conclusion">In Conclusion</h4>
+
+<p>This is a bare-bones portfolio example, but the basics are there and ready to be built upon. The beauty of Jekyll is almost anything can be done with the tools it provides - in this case it’s Liquid templating, front-matter, collections, and some simple conditionals.</p>
+
+<p>Building on these, someone could highlight specific items, add featured images, play complex front matter, and more. Have some fun and make it your own!</p>
+
+<hr />
+
+<p><em>If you have any questions, comments, critiques, or ideas for other front-end tutorials, Jekyll or otherwise, please share them with us at @newhavenio, or with me directly at @Maxwell_Dev.</em></p>
+
+
+		  </div>
+
+		</article>
+	</div>
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="container-fluid">
+    <div class="row">
+      
+      <div class="footer-links col-sm-6 col-md-8">
+          
+            <a href="/about/">
+              About
+            </a> / 
+        
+            <a href="/blog/">
+              Blog
+            </a> / 
+        
+            <a href="/developers">
+              Developers
+            </a> / 
+        
+            <a href="http://groups.google.com/forum/?fromgroups#!forum/newhavenio">
+              Contact
+            </a>
+        
+      </div>
+
+      <div class="col-sm-6 col-md-4">
+        <a href="">
+          <h4 class="footer-heading">
+            newhaven.io
+          </h4>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/modernizr.min.js"></script>
+  <script>
+    // Makes all blog links open in a new tab
+    $('article.post a').each(function() {
+      $(this).attr('target', '_blank');
+    });
+  </script>
+</footer>
+
+
+  </body>
+
+</html>

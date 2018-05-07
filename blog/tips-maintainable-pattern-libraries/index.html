@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Tips for Making Maintainable Pattern Libraries - NewHaven.IO</title>
+  <meta name="thumbnail" content="../../img/home/bg.jpg" />
+  <meta property="og:image" content="../../img/home/bg.jpg"/>
+  <meta name="description" content="It's easy to see why pattern libraries are useful, but tough to successfully maintain them over time.">
+  <meta name="p:domain_verify" content="0b12e07a4feaad3b7aa48fee8ecae8db"/>
+
+  
+
+  <title>Tips for Making Maintainable Pattern Libraries</title>
+  <meta name="description" content="It's easy to see why pattern libraries are useful, but tough to successfully maintain them over time.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://newhaven.io/blog/tips-maintainable-pattern-libraries/">
+  <link rel="alternate" type="application/rss+xml" title="newhaven.io" href="http://newhaven.io/feed.xml">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat|Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.21/webcomponents-lite.min.js"></script>
+  <script type="text/javascript" src="/js/bundle.js" charset="utf8" ></script>
+  <script src="/js/components/meetup-utils.js"></script>
+
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <!-- From https://github.com/blog/273-github-ribbons -->
+<a class="header-ribbon" target="_blank" href="https://github.com/newhavenio/newhavenio.github.io"><img src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">newhaven.io</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          
+            <li>
+              <a href="/about/">
+                About
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/">
+                Blog
+              </a>
+            </li>
+          
+            <li>
+              <a href="/developers">
+                Developers
+              </a>
+            </li>
+          
+            <li>
+              <a href="http://groups.google.com/forum/?fromgroups#!forum/newhavenio">
+                Contact
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>
+
+
+    <div class="wrapper">
+      <div class="page-content ">
+        <div class="wrapper">
+    <div class="page-content container-fluid">
+		<article class="post panel panel-default" itemscope itemtype="http://schema.org/BlogPosting">
+
+		<header class="post-header">
+			<h2 class="post-title" itemprop="name headline">Tips for Making Maintainable Pattern Libraries</h2>
+
+			<p class="post-meta">
+				Posted by <strong><span itemprop="author" itemscope itemtype="http://schema.org/Person">Max Antonucci </span></strong>on <strong><time datetime="2017-02-17T00:00:00+00:00" itemprop="datePublished">Feb 17, 2017</time></strong>
+			</p>
+
+		</header>
+		<hr>
+
+		  <div class="post-content" itemprop="articleBody">
+		    <p><strong>It’s tough to do any front-end work without hearing “pattern library” at least once a day.</strong></p>
+
+<p>Pattern libraries have become the next big thing for front-end developers making large-scale apps and websites. Breaking sites down into individual components, then assembling them into entire pages, helps in several ways - to keep code organized and scalable, easier to design for multiple devices, and more focused debugging, to name a few. Brad Frost’s book <a href="http://atomicdesign.bradfrost.com/table-of-contents/">Atomic Design</a> has helped spread word of its benefits farther, and tools for making them like <a href="http://patternlab.io/">Pattern Lab</a>, <a href="http://fractal.build/">Fractal</a>, and <a href="https://github.com/davidhund/styleguide-generators">many others</a>.</p>
+
+<p>But while these benefits are well-stated, advice on making and maintaining them gets lost along the way (at least in my experience). This article lists several rules of thumb I’ve discovered in my personal and professional work with pattern libraries to help developers do so. Hopefully they’ll help with any of yours too.</p>
+
+<h3 id="keep-your-html-absolutely-dry">Keep your HTML Absolutely DRY</h3>
+
+<p>This is the simplest and most important rule of any pattern library, and potentially the most frustrating. Most pattern library’s component HTML will be written in multiple places, such as in larger patterns or full-page templates. In all these cases, <strong>their actual HTML should only be edited from one place.</strong> If you only follow one tip here, make it this one. If you need to change a class in a button component, it should only need to be changed in one file, not every single one with a button in it.</p>
+
+<p>If you think I’m being too serious about a seemingly obvious rule, ignore those thoughts. Only writing a component’s HTML once here is extremely important, and easily overlooked by newcomers. The more WET the HTML is, there’s exponentially more opportunity for bugs to slip through. If your client sees them, all blame falls on you. Not doing this means more work, more testing, more risk, and much more.</p>
+
+<p>Following this rule means a pattern library that’s easier to update, maintain, and will have fewer “oh crap” moments. Otherwise, these moments will pile up until it’s not worth it anymore.</p>
+
+<h3 id="clearly-separate-layouts-from-components">Clearly Separate Layouts from Components</h3>
+
+<p>This one is tricky but important when it comes to keeping all the moving parts working together. The basic rule is <strong>all styles related to layout shouldn’t be directly connected to any components.</strong> <a href="http://alistapart.com/article/learning-from-lego-a-step-forward-in-modular-web-design">Issues between components and how they’re laid out are common yet dangerous</a>. Keeping them as separate as boys and girls at a junior high dance greatly helps in avoiding them.</p>
+
+<p>Pulling this off can be tough, so here’s some good rules to follow:</p>
+
+<ul>
+  <li>Make the classes that control layouts a separate section of the pattern library. These would be the containers and classes for things like a sidebar page layout, a blog page layout, or certain arrangements of components like three article in a row. This makes adding and removing components in different layouts, and editing the layouts themselves, simpler by clearly separating the concerns.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pl-l-sidebar"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pl-l-sidebar__content"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- Your main page components here, separate from the layout --&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pl-l-sidebar__aside"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- Your sidebar components here, separate from the layout --&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<ul>
+  <li>If you’re putting components in other components, like a logo and navigation in a header, define the inner containers separately. For example, the header would include a <code class="highlighter-rouge">.header__logoContainer</code> and <code class="highlighter-rouge">.header__navContainer</code> that controls the width and placement relative to other components inside the header. Then you’ll simply drop the needed components in these containers without changing their layouts directly. It’s easier to keep editing components separately and swap in different ones if needed.</li>
+  <li>Only set component widths to be inline or 100%. They’ll either expand to snugly fit in their containers, or stay a normal width if they’re simpler components like buttons.</li>
+  <li>Don’t add extra margins around components, or other styles that affect the space around them, whenever possible. This includes floats!</li>
+</ul>
+
+<p>All this will help ensure that issues with what components due won’t create others with where they’re located, and vice versa.</p>
+
+<h3 id="include-templates-of-full-page-examples">Include Templates of Full Page Examples</h3>
+
+<p>While a pattern library’s main point is to organizing separate pieces, having examples of full pages with the pieces working together is very important. How can you make sure they’ll work together right? You don’t want to spend weeks on components that look great separate, but clash on the same page.</p>
+
+<p>Pattern Lab does this efficiently by letting developers create both templates and pages. Templates are pages with placeholder text and images, while pages use actual text and images from the site. The data is defined separate from the components, making it faster and easier to create representative examples of site pages.</p>
+
+<p>It’s another reason to keep your HTML completely DRY. If any HTML changes, it should also change in the templates. Keeping the data and markup separate lets you do this with less risk of breaking something.</p>
+
+<p>One final perk: these templates speed up the process of using a pattern library in a CMS. Just copy part or all of the page, connect the HTML to the back-end as needed, and you’re set!</p>
+
+<h3 id="use-global-variables-for-common-styling">Use Global Variables for Common Styling</h3>
+
+<p>Keeping consistent styles and textures across all components is vital for a strong design. In the first stages of a pattern library, decide on an initial group of global values, such as:</p>
+
+<ul>
+  <li>A basic color palette. It can include primary, complimentary, and action colors.</li>
+  <li>Common spacing values for paddings and margins.</li>
+  <li>Font families, line heights, sizes, weights, and other elements in typography.</li>
+  <li>Borders with a set range of thickness and color options.</li>
+</ul>
+
+<p>Get in the habit of using these values when needed while developing. Need to add padding to a header? Use a spacing value. Need a background color? Use a color from the palette.</p>
+
+<p>Here’s an example of organizing global color variables in a <a href="https://www.sitepoint.com/using-sass-maps/">Sass map</a> and how to reference them:</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="err">$</span><span class="nt">g-color--shade</span><span class="o">:</span> <span class="nt">25</span><span class="o">%;</span>
+
+<span class="o">//</span> <span class="nt">Map</span> <span class="nt">for</span> <span class="nt">storing</span> <span class="nt">all</span> <span class="nt">color</span> <span class="nt">variables</span>
+<span class="err">$</span><span class="nt">color-map</span><span class="o">:</span> <span class="o">(</span>
+  <span class="nt">primary</span><span class="o">:</span> <span class="o">(</span>
+    <span class="nt">light</span> <span class="o">:</span> <span class="nt">tint</span><span class="o">(</span><span class="nt">blue</span><span class="o">,</span> <span class="err">$</span><span class="nt">g-color--shade</span><span class="o">),</span>
+    <span class="nt">base</span>  <span class="o">:</span> <span class="nt">blue</span><span class="o">,</span>
+    <span class="nt">dark</span>  <span class="o">:</span> <span class="nt">shade</span><span class="o">(</span><span class="nt">blue</span><span class="o">,</span> <span class="err">$</span><span class="nt">g-color--shade</span><span class="o">)</span>
+  <span class="o">),</span>
+
+  <span class="nt">secondary</span><span class="o">:</span> <span class="o">(</span>
+    <span class="nt">light</span> <span class="o">:</span> <span class="nt">tint</span><span class="o">(</span><span class="nt">green</span><span class="o">,</span> <span class="err">$</span><span class="nt">g-color--shade</span><span class="o">),</span>
+    <span class="nt">base</span>  <span class="o">:</span> <span class="nt">green</span><span class="o">,</span>
+    <span class="nt">dark</span>  <span class="o">:</span> <span class="nt">shade</span><span class="o">(</span><span class="nt">green</span><span class="o">,</span> <span class="err">$</span><span class="nt">g-color--shade</span><span class="o">)</span>
+  <span class="o">),</span>
+
+  <span class="nt">action</span><span class="o">:</span> <span class="o">(</span>
+    <span class="nt">light</span> <span class="o">:</span> <span class="nt">tint</span><span class="o">(</span><span class="nt">red</span><span class="o">,</span> <span class="err">$</span><span class="nt">g-color--shade</span><span class="o">),</span>
+    <span class="nt">base</span>  <span class="o">:</span> <span class="nt">red</span><span class="o">,</span>
+    <span class="nt">dark</span>  <span class="o">:</span> <span class="nt">shade</span><span class="o">(</span><span class="nt">red</span><span class="o">,</span> <span class="err">$</span><span class="nt">g-color--shade</span><span class="o">)</span>
+  <span class="o">),</span>
+
+  <span class="nt">mono</span><span class="o">:</span> <span class="o">(</span>
+    <span class="nt">blank</span> <span class="o">:</span> <span class="nt">white</span><span class="o">,</span>
+    <span class="nt">base</span>  <span class="o">:</span> <span class="nt">gray</span><span class="o">,</span>
+    <span class="nt">black</span> <span class="o">:</span> <span class="nt">black</span>
+  <span class="o">)</span>
+<span class="o">);</span>
+
+<span class="o">//</span> <span class="nt">This</span> <span class="nt">function</span> <span class="nt">pulls</span> <span class="nt">specific</span> <span class="nt">color</span> <span class="nt">values</span> <span class="nt">from</span> <span class="nt">the</span> <span class="nt">above</span> <span class="nt">map</span>
+<span class="k">@function</span> <span class="n">color</span><span class="p">(</span><span class="err">$</span><span class="n">color</span><span class="p">,</span> <span class="err">$</span><span class="n">tone</span><span class="p">:</span> <span class="s2">'base'</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">@if</span> <span class="n">map-has-key</span><span class="p">(</span><span class="err">$</span><span class="n">color-map</span><span class="p">,</span> <span class="err">$</span><span class="n">color</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">@return</span> <span class="n">map-get</span><span class="p">(</span><span class="n">map-get</span><span class="p">(</span><span class="err">$</span><span class="n">color-map</span><span class="p">,</span> <span class="err">$</span><span class="n">color</span><span class="p">),</span> <span class="err">$</span><span class="n">tone</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c">/*
+  Examples:
+  color(primary) =&gt; blue
+  color(primary, dark) =&gt; a darker blue
+  color(secondary, light) =&gt; a lighter
+*/</span></code></pre></figure>
+
+<p>Styles don’t need to be organized in maps, but the principle is the same: define basic styles ahead of time and using them whenever needed. This has two main benefits:</p>
+
+<ol>
+  <li>It creates a common texture with the components.</li>
+  <li>If they’re controlled through Sass variables, changing one value will automatically update all the components, keeping the look consistent. It’s much easier to test out different styles.</li>
+</ol>
+
+<p>Global variables can be the different between a tight, cohesive pattern library and an overblown collection of mismatched pieces. Use them to keep everything working together instead of against each other.</p>
+
+<h3 id="choose-a-sass-file-architecture">Choose a Sass File Architecture</h3>
+
+<p>Unsurprisingly, pattern libraries have a lot of CSS to organize. Choose a maintainable file structure - one that can scale well with less risk of conflicts or overlaps.</p>
+
+<p>There’s some <a href="https://www.sitepoint.com/architecture-in-sass/">popular Sass architectures to choose from</a>, and the right choice depends on the project and the developer’s style. My own favorite is <a href="https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/">ITCSS, or Inverted Triangle CSS</a>, where the structure is defined based on the code’s priority. It’s easier to control specificity and avoid style overlaps. You can add or rename certain sections if you want, depending on your naming scheme. You should still follow the basic structure, shown below:</p>
+
+<figure class=" post-img post-image">
+	<img class="image-caption-img" src=" /img/posts/pattern-library-tips/itcss-layers.svg " alt=" The basic ITCSS file structure from &lt;a href='https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/' target='_blank'&gt;xfive.co.&lt;/a&gt; " />
+	<figcaption>The basic ITCSS file structure from <a href="https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/" target="_blank">xfive.co.</a></figcaption>
+</figure>
+
+<p>My own take on it changed some of names but keeps the basic rules:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Main Sass Folder
+|
+| -- Settings      // Global variables
+| -- Tools         // Functions and mixins
+| -- Generic       // Global element changes, including Reset or Normalize
+| -- Layouts       // Specific layout styles and patterns
+| -- Base          // Basic element styling
+| -- Components    // More complex elements that use those in Base
+| -- Patterns      // The final elements made up of Base and Components
+| -- Trumps        // Last resort styles that override all others
+</code></pre></div></div>
+
+<h3 id="use-a-naming-convention">Use a Naming Convention</h3>
+
+<p>Like the last two tips, this one’s about managing complexity - here it’s the complexity of class names. Keeping class names specific and separate, yet easily understood and managed. This means choosing a class naming scheme.</p>
+
+<p>There’s again room for personal preference. The <a href="http://thesassway.com/advanced/modular-css-naming-conventions">most popular ones</a> include SMACSS and OOCSS, but my favorite is BEM. More specifically, <a href="https://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/">BEMIT</a>, which has a few additions to mesh better with ITCSS.</p>
+
+<p>The biggest difference is adding some extra namespaces to each class. I prepend each class with two acronyms:</p>
+
+<ol>
+  <li><strong>The name of the pattern library.</strong> If it’s called “Awesome Pattern Library,” you may use <code class="highlighter-rouge">.apl-</code>.</li>
+  <li><strong>The class’s section or use.</strong> A component in the <code class="highlighter-rouge">atoms</code> section (for the Atomic Design hierarchy) would then be prepended with <code class="highlighter-rouge">.apl-a-</code>; a layout class would use <code class="highlighter-rouge">.apl-l-</code>; a helper class would use <code class="highlighter-rouge">.apl-h-</code>.</li>
+</ol>
+
+<p>These namespaces may need odd, but have two benefits:</p>
+
+<ol>
+  <li><strong>They prevent conflicts against third-party markup.</strong> It’s extremely unlikely any external plugin will use these same namespaces, so there’s no chance of styles overlap.</li>
+  <li><strong>It’s easy to identify a class at a glance.</strong> One can see if a class is for a component, a layout, a helper, etc. Looking through complicated markup will be faster and easier.</li>
+</ol>
+
+<p>Choose what naming convention works for you. Even if it means playing around with an established convention like I have.</p>
+
+<h3 id="avoid-3rd-party-frameworks-if-possible">Avoid 3rd-Party Frameworks, if Possible</h3>
+
+<p>My personal rule about 3rd-party frameworks, like Bootstrap or Foundation, is “avoid when possible.” If you’re making a pattern library from scratch and there’s no explicit reason to use one, don’t.</p>
+
+<p>My main argument for this is <strong>3rd-party frameworks come with different rules and conventions you’ll need to work around if they’re different from yours.</strong> Using a naming convention or global variables gets tougher when the framework already has its own ideas going for it. There’s more opportunities for conflicts, and often more need for messy overrides, workarounds, and abuse of <code class="highlighter-rouge">!important</code>.</p>
+
+<p>Now if it’s a framework you’re very comfortable with, agree with in important rules and conventions, and it’ll save much-needed time, then go right ahead. Otherwise, avoid headaches and start from scratch.</p>
+
+<h4 id="in-conclusion">In Conclusion</h4>
+
+<p>Pattern libraries likely aren’t going anywhere, due to how effective they are in creating and managing components for large sites and apps. If you’re a front-end developer, chances are you’ll be making a few in your career. Either as a work requirement or to just try them out.</p>
+
+<p>Even if these tips go against how your own rules as a coder, they’re still starting points for avoiding mistakes I’ve made earlier in pattern libraries. So please keep them in mind to keep all the working pieces working together, instead of quickly crashing into each other and dragging your site down with it.</p>
+
+
+		  </div>
+
+		</article>
+	</div>
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="container-fluid">
+    <div class="row">
+      
+      <div class="footer-links col-sm-6 col-md-8">
+          
+            <a href="/about/">
+              About
+            </a> / 
+        
+            <a href="/blog/">
+              Blog
+            </a> / 
+        
+            <a href="/developers">
+              Developers
+            </a> / 
+        
+            <a href="http://groups.google.com/forum/?fromgroups#!forum/newhavenio">
+              Contact
+            </a>
+        
+      </div>
+
+      <div class="col-sm-6 col-md-4">
+        <a href="">
+          <h4 class="footer-heading">
+            newhaven.io
+          </h4>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/modernizr.min.js"></script>
+  <script>
+    // Makes all blog links open in a new tab
+    $('article.post a').each(function() {
+      $(this).attr('target', '_blank');
+    });
+  </script>
+</footer>
+
+
+  </body>
+
+</html>
