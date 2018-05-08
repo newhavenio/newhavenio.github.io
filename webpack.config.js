@@ -10,6 +10,11 @@ const extractSass = new ExtractTextPlugin({
 
 const uglifyJs = new UglifyJsPlugin({});
 const vuePlugin = new VueLoaderPlugin();
+const webpackDefinePlugin = new webpack.DefinePlugin({
+  "process.env": {
+    NODE_ENV: JSON.stringify("production")
+  }
+});
 
 module.exports = {
   entry: "./webpack/entry.js",
@@ -63,7 +68,8 @@ module.exports = {
       jQuery: "jquery"
     }),
     extractSass,
-    //uglifyJs,
-    vuePlugin
+    uglifyJs,
+    vuePlugin,
+    webpackDefinePlugin
   ]
 };
