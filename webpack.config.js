@@ -1,14 +1,15 @@
-const path = require('path');
-const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const path = require("path");
+const webpack = require("webpack");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const { VueLoaderPlugin } = require("vue-loader");
 
 const extractSass = new ExtractTextPlugin({
   filename: "../css/[name].css"
 });
 
-const uglifyJs = new UglifyJsPlugin({
-});
+const uglifyJs = new UglifyJsPlugin({});
+const vuePlugin = new VueLoaderPlugin();
 
 module.exports = {
   entry: "./webpack/entry.js",
@@ -17,16 +18,6 @@ module.exports = {
     filename: "bundle.js"
   },
   module: {
-    loaders:[
-      {
-        test: /\.jsx?$/,
-        exclude: /(node_modules)/,
-        loader: "babel-loader",
-        query: {
-          presets: ["react", "es2015"]
-        }
-      }
-    ],
     rules: [
       {
         test: /\.(ttf|eot|svg|gif)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -42,7 +33,7 @@ module.exports = {
             {
               loader: "css-loader",
               options: {
-                minimize: true,
+                minimize: true
               }
             },
             {
@@ -51,15 +42,28 @@ module.exports = {
           ],
           fallback: "style-loader"
         })
+      },
+      {
+        test: /\.vue$/,
+        loader: "vue-loader"
+      },
+      {
+        test: /\.js$/,
+        loader: "babel-loader"
+      },
+      {
+        test: /\.css$/,
+        use: ["vue-style-loader", "css-loader"]
       }
-    ],
+    ]
   },
-  plugins:[
+  plugins: [
     new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery'
+      $: "jquery",
+      jQuery: "jquery"
     }),
     extractSass,
-    uglifyJs
+    //uglifyJs,
+    vuePlugin
   ]
-}
+};
