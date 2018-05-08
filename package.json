@@ -16,9 +16,12 @@
     "bootstrap-sass": "^3.3.7",
     "bourbon": "^4.2.4",
     "jquery": "3.2.1",
+    "jsonp": "^0.2.1",
     "modernizr": "3.2.0",
+    "moment": "^2.22.1",
     "mustache": "^2.3.0",
-    "susy": "^2.2.4"
+    "susy": "^2.2.4",
+    "vue": "^2.5.16"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -34,6 +37,9 @@
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
     "uglifyjs-webpack-plugin": "^1.2.5",
+    "vue-loader": "^15.0.9",
+    "vue-style-loader": "^4.1.0",
+    "vue-template-compiler": "^2.5.16",
     "webpack": "^3.11.0"
   },
   "scripts": {
