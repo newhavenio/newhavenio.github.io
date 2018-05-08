@@ -24,6 +24,16 @@ $ npm run build
 $ jekyll serve
 ```
 
+## Contributing
+
+1. Fork the repo and set up the local dev environment. Please see the above for how to do that.
+2. Make a branch off of `develop`.
+3. Make your changes. Write tests when appropriate.
+4. Make a Pull Request to the upstream develop.
+
+## Deployment
+
+The site is built using travis. Successful builds on the develop branch commit the compiled site in its entirety to master. This is entirely automated. Only one user, @newhaven-io-deploybot can push to master.
 
 ## License ##
 
