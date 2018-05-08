@@ -2,7 +2,7 @@ language: ruby
 cache: bundler
 install:
 - bundle install
-- npm install
+- yarn
 script:
 - "./build.sh"
 deploy:
