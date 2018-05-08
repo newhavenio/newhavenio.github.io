@@ -2,7 +2,7 @@ language: ruby
 cache: bundler
 install:
 - bundle install
-- yarn
+- yarn install --pure-lockfile
 script:
 - "./build.sh"
 deploy:
