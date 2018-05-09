@@ -3,7 +3,8 @@ const webpack = require("webpack");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
-
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 const extractSass = new ExtractTextPlugin({
   filename: "../css/[name].css"
 });
@@ -71,5 +72,6 @@ module.exports = {
     uglifyJs,
     vuePlugin,
     webpackDefinePlugin
+    //new BundleAnalyzerPlugin()
   ]
 };
