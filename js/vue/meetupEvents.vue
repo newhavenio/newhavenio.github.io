@@ -27,9 +27,14 @@ import jsonp from 'jsonp';
 import { parameterize, formatDate } from '../utils/component-utils.js';
 
 
-const desiredNumberOfHackNights = 4;
-const hackNight = "[Everyone] Full Stack Hack Night";
-const url = "http://api.meetup.com/newhavenio/events?";
+const DESIRED_HACK_NIGHTS = 4;
+const HACK_NIGHT = "[Everyone] Full Stack Hack Night";
+const EVENT_URL = "http://api.meetup.com/newhavenio/events?";
+const PARAMS = {
+  page: 20,
+  status: 'upcoming',
+}
+               
 export default {
   data: function() {
     return {
@@ -38,24 +43,15 @@ export default {
   },
   methods: {
     getEvents: function() {
-      console.log("I'm in get events!");
-      var url = "http://api.meetup.com/newhavenio/events?"
-      var params = {
-        page: 20,
-        status: 'upcoming',
-      }
-      var requestUrl = url + parameterize(params);
-      console.log(requestUrl);
+      var requestUrl = EVENT_URL + parameterize(PARAMS);
       jsonp(requestUrl, null, (err, data) => {
         var rawEvents = data.data;
-        var hackNight = "[Everyone] Full Stack Hack Night";
-        var desiredNumberOfHackNights = 4
         var eventsArray = [];
         var foundHacks = 0;
         this.events = rawEvents.filter( function(event) {
-          if (event.name !== hackNight) { return true; }
+          if (event.name !== HACK_NIGHT) { return true; }
           foundHacks++;
-          if (foundHacks < desiredNumberOfHackNights) { return true; }
+          if (foundHacks < DESIRED_HACK_NIGHTS) { return true; }
           return false;
         } )
         .map( function(event, index) {
