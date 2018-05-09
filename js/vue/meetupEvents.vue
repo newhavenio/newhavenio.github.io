@@ -22,11 +22,14 @@
 <script>
 //import node module dependencies
 import jsonp from 'jsonp';
-import moment from 'moment';
-//import utility dependencies
-import { parameterize } from '../utils/component-utils.js';
 
-moment().format();
+//import utility dependencies
+import { parameterize, formatDate } from '../utils/component-utils.js';
+
+
+const desiredNumberOfHackNights = 4;
+const hackNight = "[Everyone] Full Stack Hack Night";
+const url = "http://api.meetup.com/newhavenio/events?";
 export default {
   data: function() {
     return {
@@ -48,23 +51,17 @@ export default {
         var hackNight = "[Everyone] Full Stack Hack Night";
         var desiredNumberOfHackNights = 4
         var eventsArray = [];
-        rawEvents.reduce( function(acc, event) {
-          if (event.name !== hackNight) {
-            eventsArray.push(event);
-            return acc;
-          } else if ((event.name === hackNight)&&(acc < desiredNumberOfHackNights)){
-            eventsArray.push(event);
-            acc++;
-            return acc;
-          } else {
-            return acc;
-          }
-        }, 0 )
-        eventsArray.forEach( function(event, index) {
-          let date = moment(event.local_date + " " + event.local_time)
-          eventsArray[index]["parsed_date"] = date.format("LLL");
-        })
-        this.events = eventsArray;
+        var foundHacks = 0;
+        this.events = rawEvents.filter( function(event) {
+          if (event.name !== hackNight) { return true; }
+          foundHacks++;
+          if (foundHacks < desiredNumberOfHackNights) { return true; }
+          return false;
+        } )
+        .map( function(event, index) {
+          event["parsed_date"] = formatDate(event.local_date, event.local_time); 
+          return event; 
+        } );
       })
     },
   },
