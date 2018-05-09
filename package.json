@@ -18,7 +18,6 @@
     "jquery": "3.2.1",
     "jsonp": "^0.2.1",
     "modernizr": "3.2.0",
-    "moment": "^2.22.1",
     "mustache": "^2.3.0",
     "susy": "^2.2.4",
     "vue": "^2.5.16"
@@ -40,7 +39,8 @@
     "vue-loader": "^15.0.9",
     "vue-style-loader": "^4.1.0",
     "vue-template-compiler": "^2.5.16",
-    "webpack": "^3.11.0"
+    "webpack": "^3.11.0",
+    "webpack-bundle-analyzer": "^2.11.1"
   },
   "scripts": {
     "build": "webpack"
