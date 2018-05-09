@@ -8,6 +8,9 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 const extractSass = new ExtractTextPlugin({
   filename: "../css/[name].css"
 });
+const extractVueCss = new ExtractTextPlugin({
+  filename: "../css/vue-styles.css"
+});
 
 const uglifyJs = new UglifyJsPlugin({});
 const vuePlugin = new VueLoaderPlugin();
@@ -16,6 +19,8 @@ const webpackDefinePlugin = new webpack.DefinePlugin({
     NODE_ENV: JSON.stringify("production")
   }
 });
+
+const bundleAnalyzer = new BundleAnalyzerPlugin();
 
 module.exports = {
   entry: "./webpack/entry.js",
@@ -59,7 +64,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["vue-style-loader", "css-loader"]
+        loader: extractVueCss.extract({
+          use: "css-loader",
+          fallback: "vue-style-loader"
+        })
       }
     ]
   },
@@ -68,10 +76,10 @@ module.exports = {
       $: "jquery",
       jQuery: "jquery"
     }),
+    vuePlugin,
     extractSass,
     uglifyJs,
-    vuePlugin,
-    webpackDefinePlugin
-    //new BundleAnalyzerPlugin()
+    webpackDefinePlugin,
+    extractVueCss
   ]
 };
