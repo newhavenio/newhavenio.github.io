@@ -3,7 +3,7 @@
   <div>
     <div class="meetups">
       <div class="meetup-event" v-for="event in events" :key="event.id">
-        <h3 class="meetup-heading"> {{ event.name }}</h3>
+        <h3 class="meetup-heading"> {{ event.name }} </h3>
         <hr>
         <div class="meetup-description">
           <div v-html="event.description"></div>
@@ -29,7 +29,7 @@ import { parameterize, formatDate } from '../utils/component-utils.js';
 
 const DESIRED_HACK_NIGHTS = 4;
 const HACK_NIGHT = "[Everyone] Full Stack Hack Night";
-const EVENT_URL = "http://api.meetup.com/newhavenio/events?";
+const EVENT_URL = "//api.meetup.com/newhavenio/events?";
 const PARAMS = {
   page: 20,
   status: 'upcoming',
@@ -46,7 +46,6 @@ export default {
       var requestUrl = EVENT_URL + parameterize(PARAMS);
       jsonp(requestUrl, null, (err, data) => {
         var rawEvents = data.data;
-        var eventsArray = [];
         var foundHacks = 0;
         this.events = rawEvents.filter( function(event) {
           if (event.name !== HACK_NIGHT) { return true; }
