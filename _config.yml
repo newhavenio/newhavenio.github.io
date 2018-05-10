@@ -14,6 +14,7 @@ description: > # this means to ignore newlines until "baseurl:"
   newhaven.io is a group of talented and passionate individuals living, working and creating in the New Haven area.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://newhaven.io" # the base hostname & protocol for your site
+source_url: https://github.com/newhavenio/newhavenio.github.io
 permalink: /blog/:title/
 paginate: 9,
 paginate_path: "/blog/page:num/"
