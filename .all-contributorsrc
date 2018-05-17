@@ -1,0 +1,28 @@
+{
+  "projectName": "newhavenio.github.io",
+  "projectOwner": "newhavenio",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "sukima",
+      "name": "Devin Weaver",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/70075?v=4",
+      "profile": "http://tritarget.org/",
+      "contributions": [
+        "bug",
+        "code",
+        "ideas",
+        "review",
+        "talk",
+        "tool",
+        "eventOrganizing"
+      ]
+    }
+  ]
+}
