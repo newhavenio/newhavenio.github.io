@@ -1,5 +1,5 @@
 ## NewHaven.io Jekyll site
-[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 New Jekyll site for NewHaven.io, using Bootstrap and Jekyll for more collaboration in development and blog writing.
 
@@ -37,6 +37,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
+| [<img src="https://avatars3.githubusercontent.com/u/70075?v=4" width="100px;"/><br /><sub><b>Devin Weaver</b></sub>](http://tritarget.org/)<br />[🐛](https://github.com/newhavenio/newhavenio.github.io/issues?q=author%3Asukima "Bug reports") [💻](https://github.com/newhavenio/newhavenio.github.io/commits?author=sukima "Code") [🤔](#ideas-sukima "Ideas, Planning, & Feedback") [👀](#review-sukima "Reviewed Pull Requests") [📢](#talk-sukima "Talks") [🔧](#tool-sukima "Tools") [📋](#eventOrganizing-sukima "Event Organizing") |
+| :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
