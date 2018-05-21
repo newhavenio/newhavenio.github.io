@@ -25,6 +25,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "concurrently": "^3.5.1",
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",
@@ -37,6 +38,9 @@
     "webpack": "^3.11.0"
   },
   "scripts": {
-    "build": "webpack"
+    "start": "concurrently -n jekyll,webpack \"yarn run jekyll-server\" \"yarn run webpack-watch\"",
+    "jekyll-server": "jekyll serve --incremental --watch",
+    "webpack-watch": "webpack -w",
+    "webpack": "webpack"
   }
 }

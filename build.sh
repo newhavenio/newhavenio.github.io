@@ -14,7 +14,7 @@ function clean {
 
 function build_site {
     echo "building site"
-    npm run build
+    yarn run webpack
     bundle exec jekyll build
 }
 
