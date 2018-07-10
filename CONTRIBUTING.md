@@ -8,8 +8,8 @@
 
 ## Blog posts
 
-We encourage anyone to write content for the blog. We need topics on all things tech. Please concider submitting posts. :cake: may or may not be offered in appreciation.
+We encourage anyone to write content for the blog. We need topics on all things tech. Please consider submitting posts. :cake: may or may not be offered in appreciation.
 
 ## Licensing
 
-All contributions will fall under the MIT license unless expicitly stated otherwise.
+All contributions will fall under the MIT license unless explicitly stated otherwise.
