@@ -1,10 +1,11 @@
 const path = require('path');
+const glob = require('glob')
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const extractSass = new ExtractTextPlugin({
-  filename: "../css/[name].css"
+  filename: "../_includes/[name].css"
 });
 
 const uglifyJs = new UglifyJsPlugin({
@@ -43,7 +44,11 @@ module.exports = {
               loader: "css-loader",
               options: {
                 minimize: true,
+                importLoaders: 1
               }
+            },
+            {
+              loader: "postcss-loader"
             },
             {
               loader: "sass-loader"
