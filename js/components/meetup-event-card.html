@@ -1,19 +1,41 @@
 <template id="meetup-event-card-template" type="x-tmpl-mustache">
-  <article class="panel panel-default">
-    <div class="panel-heading">
-      <a href="{{event_url}}" target="_blank">
-        <h3>{{name}}</h3>
-      </a>
+  <article class="h-full flex flex-col -mx-4 md:-mx-0 mb-6 rounded bg-grey-lightest shadow-lg">
+    <div class="p-4 bg-teal-dark">
+      <h2 class="no-marg">
+        <a class="text-white" href="{{event_url}}" target="_blank">
+          {{name}}
+        </a>
+      </h2>
     </div>
-    <div class="panel-body">
-      <div class="col-sm-8">
-        <p>{{{description}}}</p>
-      </div>
-      <div class="col-sm-4"><b>WHEN:</b> {{formattedDate}}
-        <br><b>WHERE:</b> <a href="{{venueLink}}" target="_blank">{{venue.name}}</a>
-        <br><b>WHO:</b> {{yes_rsvp_count}} already going
-      </div>
+
+    <div class="px-4 pt-4 md:mb-auto">
+      {{{description}}}
     </div>
+
+    <dl class="p-4 md:mt-auto bg-grey-lighter border-black border-t">
+      <div class="flex">
+        <dt class="font-bold">WHEN:</dt>
+        <dd class="ml-2">{{formattedDate}}</dd>
+      </div>
+
+      <div class="flex">
+        <dt class="font-bold">WHERE:</dt>
+        <dd class="ml-2">
+          {{#venue.name}}
+            <a href="{{venueLink}}" target="_blank">{{venue.name}}</a>
+          {{/venue.name}}
+
+          {{^venue.name}}
+            To Be Decided
+          {{/venue.name}}
+        </dd>
+      </div>
+
+      <div class="flex">
+        <dt class="font-bold">WHO:</dt>
+        <dd class="ml-2">{{yes_rsvp_count}} already going</dd>
+      </div>
+    </dl>
   </article>
 </template>
 

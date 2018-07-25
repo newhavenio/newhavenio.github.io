@@ -1,11 +1,11 @@
 - name: About
   link: '/about/'
 
-- name: Blog
-  link: '/blog/'
+- name: Events
+  link: '/events/'
 
-- name: Developers
-  link: '/developers'
+- name: Mentors
+  link: '/mentors/'
 
 - name: Contact
-  link: 'http://groups.google.com/forum/?fromgroups#!forum/newhavenio'
+  link: '/contact/'

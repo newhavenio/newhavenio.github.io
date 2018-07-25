@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
   {% include head.html %}
 
-  <body>
+  <body class="min-h-screen flex flex-col mt-auto">
+    <a aria-label="Skip Link" class="skip-link" href="#main">
+      Skip to Content
+    </a>
 
-    {% include header.html %}
+    {% include nav.html %}
 
-    <div class="wrapper">
-      <div class="page-content {% if page.container == true %}container-fluid{% endif %}">
-        {{ content }}
-      </div>
-    </div>
+    <main id="main" {% if page.container == false %}class="p-4"{% endif %}>
+      {{ content }}
+    </main>
 
     {% include footer.html %}
-
   </body>
-
 </html>

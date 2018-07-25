@@ -1,0 +1,31 @@
+{% if page.url == '/' %}
+  {% assign home_link = '#main' %}
+{% else %}
+  {% assign home_link = '/' | site.baseurl %}
+{% endif %}
+
+<header class="border-orange border-t-3 border-b-3 bg-grey-lightest shadow-md" role="banner">
+  <div class="nh-o-maxWidth py-0 flex items-center justify-between">
+    <a href="{{ home_link }}" class="inline-flex pr-8">
+      <img class="w-16" src="/img/logo.svg" alt="NewHaven.IO homepage">
+    </a>
+    <nav>
+      <ul class="list-reset flex flex-wrap items-center justify-end">
+        {% for menu in site.data.menu %}
+          {% if page.url == menu.link %}
+            {% assign link = '#main' %}
+            {% assign active_classes = 'font-semibold text-base' %}
+          {% else %}
+            {% assign link = menu.link | prepend: site.baseurl %}
+            {% assign active_classes = '' %}
+          {% endif %}
+          <li>
+            <a class="inline-block p-3 md:p-4 {{ active_classes }}" href="{{ link }}">
+              {{ menu.name }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

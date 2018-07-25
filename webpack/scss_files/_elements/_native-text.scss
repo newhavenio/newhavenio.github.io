@@ -1,0 +1,24 @@
+.native-text {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    &:not(.no-marg) {
+      @apply .mt-8 .mb-4 .leading-tight;
+    }
+  }
+
+  p,
+  ol,
+  ul,
+  small,
+  tiny {
+    @apply .mb-4 .leading-normal;
+  }
+}
+
+a {
+  @apply .text-orange-dark;
+}
