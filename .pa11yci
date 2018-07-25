@@ -1,0 +1,25 @@
+{
+  "defaults": {
+    "timeout": 6000
+  },
+  "urls": [
+    {
+      "url": "http://localhost:4000"
+    }, {
+      "url": "http://localhost:4000/about/",
+      "hideElements": "footer, header"
+    }, {
+      "url": "http://localhost:4000/events/",
+      "hideElements": "footer, header",
+      "actions": [
+        "wait for element .nh-o-eventCard to be added"
+      ]
+    }, {
+      "url": "http://localhost:4000/mentors/",
+      "hideElements": "footer, header"
+    }, {
+      "url": "http://localhost:4000/contact/",
+      "hideElements": "footer, header"
+    }
+  ]
+}
