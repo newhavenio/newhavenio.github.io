@@ -8,10 +8,9 @@
 plugins: [jekyll-paginate]
 
 # Site settings
-title: newhaven.io
-email: your-email@domain.com
+title: NewHaven.IO
 description: > # this means to ignore newlines until "baseurl:"
-  newhaven.io is a group of talented and passionate individuals living, working and creating in the New Haven area.
+  NewHaven.IO is a group of talented and passionate programmers living, working and creating in the New Haven area.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://newhaven.io" # the base hostname & protocol for your site
 permalink: /blog/:title/
@@ -29,4 +28,3 @@ markdown: kramdown
 
 # Google services
 google_analytics: UA-42537303-1
-
