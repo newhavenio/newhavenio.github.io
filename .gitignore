@@ -1,7 +1,7 @@
-css/main.css
-js/bundle.js
+css/main.css*
+js/bundle.js*
 _site
-_includes/main.css
+_includes/main.css*
 .jekyll-metadata
 .sass-cache
 feed.xml
