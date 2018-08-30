@@ -1,37 +1,12 @@
-@charset "utf-8";
+@tailwind preflight;
+@tailwind components;
 
-@import
-	"utils/bootstrap-variables"
-;
+@import "_generic/global";
 
-$icon-font-path: "~/bootstrap-sass/assets/fonts";
-@import
-	"~bourbon/app/assets/stylesheets/bourbon",
-	"~bootstrap-sass/assets/stylesheets/bootstrap",
-	"~susy/sass/susy"
-;
+@import "_elements/_native-text";
 
-@import
-	"base/base"
-;
+@import "_objects/_event-cards";
+@import "_objects/_max-width";
+@import "_objects/_skip-link";
 
-@import
-	"layout/grid",
-	"layout/dev-cards",
-	"layout/blog-list"
-;
-
-@import
-	"pages/home",
-	"pages/blog-post"
-;
-
-@import
-	"components/syntax-highlighting",
-	"components/dev-card",
-	"components/navbar",
-	"components/footer",
-	"components/panels",
-	"components/video-wrapper",
-	"components/post-images"
-;
+@tailwind utilities;

@@ -1,0 +1,9 @@
+.skip-link {
+  position: absolute;
+  left: -100000px;
+
+  @apply .bg-white .p-2 .shadow-md;
+
+  &:focus,
+  &:active { left: 0; }
+}

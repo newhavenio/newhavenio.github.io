@@ -1,0 +1,5 @@
+.nh-o-eventCard {
+  flex: 1 1 20rem;
+
+  @screen md { @apply .p-2; }
+}

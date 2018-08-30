@@ -1,0 +1,5 @@
+.nh-o-maxWidth {
+  @apply .block .max-w-md .mx-auto .p-4;
+}
+
+.nh-o-maxWidth--full { @apply .max-w-xl; }
