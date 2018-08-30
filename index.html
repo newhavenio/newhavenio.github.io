@@ -1,20 +1,14 @@
 ---
 layout: default
-container: false
+title: Homepage
+container_classes: "flex"
 ---
+<div class="p-4 max-w-lg mx-auto flex-1 flex flex-col items-center justify-center">
+  <h1 class="mb-4">
+    {{ site.title }}
+  </h1>
 
-<link rel="import" href="{{ "/js/components/meetup-events.html" | prepend: site.baseurl }}">
-<link rel="import" href="{{ "/js/components/meetup-event-card.html" | prepend: site.baseurl }}">
-
-<div class="home">
-
-{% include masthead.html %}
-
-<section id="meetup-events" class="container-fluid">
-    <meetup-events
-        id="events"
-        max-events="5">
-    </meetup-events>
-</section>
-
+  <h3>
+    {{ site.description }}
+  </h3>
 </div>

@@ -1,11 +1,11 @@
 <template id="meetup-events-error-template" type="x-tmpl-mustache">
-  <div class="alert alert-danger">
+  <div>
     {{message}}
   </div>
 </template>
 
 <template id="meetup-events-loading-template" type="x-tmpl-mustache">
-  <div class="alert alert-info">
+  <div>
     Loading events&hellip;
   </div>
 </template>
@@ -47,6 +47,7 @@
           this.innerHTML = '';
           events.forEach(function (eventData) {
             var eventCard = document.createElement('meetup-event-card');
+            eventCard.className = 'nh-o-eventCard';
             eventCard.data = eventData;
             this.appendChild(eventCard);
           }, this);

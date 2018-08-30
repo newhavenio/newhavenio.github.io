@@ -1,0 +1,23 @@
+- name: Fake Name 1
+  company: Fake Company 1
+  focus: Back-end Development
+  languages: CSS, JavaScript, Ruby, Rust
+  description: Deserunt quis enim dolore cupidatat laboris elit cupidatat cillum minim pariatur fugiat nisi dolore. Incididunt minim adipisicing Lorem tempor cupidatat laborum ut proident tempor veniam excepteur.
+
+- name: Fake Name 2
+  company: Fake Company 2
+  focus: Back-end Development
+  languages: CSS, JavaScript, Ruby, Rust
+  description: Deserunt quis enim dolore cupidatat laboris elit cupidatat cillum minim pariatur fugiat nisi dolore. Incididunt minim adipisicing Lorem tempor cupidatat laborum ut proident tempor veniam excepteur.
+
+- name: Fake Name 3
+  company: Fake Company 3
+  focus: Back-end Development
+  languages: CSS, JavaScript, Ruby, Rust
+  description: Deserunt quis enim dolore cupidatat laboris elit cupidatat cillum minim pariatur fugiat nisi dolore. Incididunt minim adipisicing Lorem tempor cupidatat laborum ut proident tempor veniam excepteur.
+
+- name: Fake Name 4
+  company: Fake Company 4
+  focus: Back-end Development
+  languages: CSS, JavaScript, Ruby, Rust
+  description: Deserunt quis enim dolore cupidatat laboris elit cupidatat cillum minim pariatur fugiat nisi dolore. Incididunt minim adipisicing Lorem tempor cupidatat laborum ut proident tempor veniam excepteur.
