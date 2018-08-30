@@ -1,31 +1,39 @@
-<footer class="site-footer">
+<!-- Have the description not appear on homepage -->
+<!-- Social links -->
 
-  <div class="container-fluid">
-    <div class="row">
-      
-      <div class="footer-links col-sm-6 col-md-8">
-          {% for menu in site.data.menu %}
-            <a href="{{ menu.link | prepend: site.baseurl }}">
+<footer class="mt-auto bg-teal-darker text-grey-lighter shadow-lg">
+  <div class="nh-o-maxWidth flex flex-col">
+    {% unless page.url == "/" %}
+      <p class="pb-6 text-teal-lighter leading-normal">
+        {{ site.description }}
+      </p>
+
+      <ul class="flex mb-6 list-reset">
+        {% for menu in site.data.menu %}
+          {% if page.url == menu.link %}
+            {% assign link = '#main' %}
+            {% assign active_classes = 'font-semibold' %}
+          {% else %}
+            {% assign link = menu.link | prepend: site.baseurl %}
+            {% assign active_classes = 'text-sm' %}
+          {% endif %}
+          <li>
+            <a {% if menu.external %}target="_blank" rel="noopener"{% endif %} class="inline-block mr-4 text-teal-lighter {{ active_classes }}" href="{{ link }}">
               {{ menu.name }}
-            </a>{% if forloop.last == false %} / {% endif %}
+            </a>
+          </li>
         {% endfor %}
-      </div>
+      </ul>
+    {% endunless %}
 
-      <div class="col-sm-6 col-md-4">
-        <a href="{{ menu.link | prepend: site.baseurl }}">
-          <h4 class="footer-heading">
-            {{ site.title }}
-          </h4>
-        </a>
-      </div>
-    </div>
+    <ul class="flex mb-6 list-reset">
+      {% for social in site.data.social-links %}
+        <li>
+          <a target="_blank" rel="noopener" href="{{ social.link }}" class="inline-block mr-4 text-teal-lighter text-sm">
+              {{ social.name }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
   </div>
-
-  <script src="{{ "/js/modernizr.min.js" | prepend: site.baseurl }}"></script>
-  <script>
-    // Makes all blog links open in a new tab
-    $('article.post a').each(function() {
-      $(this).attr('target', '_blank');
-    });
-  </script>
 </footer>

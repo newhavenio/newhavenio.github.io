@@ -1,0 +1,11 @@
+- name: Slack
+  label: Chat with us on
+  link: https://newhavenio-slackin.herokuapp.com/
+
+- name: Twitter
+  label: Talk with us on
+  link: http://www.twitter.com/newhavenio
+
+- name: Meetup
+  label: Find us on
+  link: http://www.meetup.com/newhavenio/

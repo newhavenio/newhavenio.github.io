@@ -1,11 +1,12 @@
 - name: About
   link: '/about/'
 
-- name: Blog
-  link: '/blog/'
-
-- name: Developers
-  link: '/developers'
+- name: Events
+  link: '/events/'
 
 - name: Contact
-  link: 'http://groups.google.com/forum/?fromgroups#!forum/newhavenio'
+  link: '/contact/'
+
+- name: Code of Conduct
+  link: 'https://github.com/newhavenio/code-of-conduct/blob/master/README.md'
+  external: true
