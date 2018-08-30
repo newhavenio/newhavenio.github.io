@@ -1,19 +1,12 @@
 ---
 layout: default
 ---
+<header class="pt-4">
+	<h1 class="nh-o-maxWidth {% if page.fullWidth %}nh-o-maxWidth--full{% endif %}">
+		{{ page.title }}
+	</h1>
+</header>
 
-<div class="wrapper">
-    <div class="page-content container-fluid">
-		<div class="panel panel-default">
-
-		  <div class="panel-header">
-		    <h1 class="page-title">{{ page.title }}</h1>
-		  </div>
-
-		  <div class="panel-body">
-		    {{ content }}
-		  </div>
-
-		</div>
-	</div>
-</div>
+<article class="nh-o-maxWidth {% if page.fullWidth %}nh-o-maxWidth--full{% endif %} native-text">
+	{{ content }}
+</article>
