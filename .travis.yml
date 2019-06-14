@@ -2,6 +2,7 @@ language: ruby
 cache: bundler
 install:
 - bundle install
+- echo $(node -v)
 - yarn
 script:
 - "./build.sh"
