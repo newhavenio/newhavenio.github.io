@@ -12,6 +12,9 @@
     "Zach Morek <zmorek@gmail.com>"
   ],
   "license": "MIT",
+  "engines": {
+    "node": "8.12.x"
+  },
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
     "bourbon": "^4.2.4",
