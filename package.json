@@ -19,7 +19,7 @@
     "bootstrap-sass": "^3.3.7",
     "bourbon": "^4.2.4",
     "jquery": "3.4.0",
-    "modernizr": "3.2.0",
+    "modernizr": "^3.2.0",
     "mustache": "^2.3.0",
     "susy": "^2.2.4"
   },
