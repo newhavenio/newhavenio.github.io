@@ -1,65 +1,75 @@
-const path = require('path');
-const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+/**
+ * @format
+ */
 
-const extractSass = new ExtractTextPlugin({
-  filename: "../css/[name].css"
-});
-
-const uglifyJs = new UglifyJsPlugin({
-});
+const path = require("path");
+const webpack = require("webpack");
+const TerserJSPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
+  optimization: {
+    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: "main",
+          test: /\.css$/,
+          chunks: "all",
+          enforce: true
+        }
+      }
+    }
+  },
   entry: "./webpack/entry.js",
   output: {
     path: path.resolve(__dirname, "js/"),
     filename: "bundle.js"
   },
   module: {
-    loaders:[
-      {
-        test: /\.jsx?$/,
-        exclude: /(node_modules)/,
-        loader: "babel-loader",
-        query: {
-          presets: ["react", "es2015"]
-        }
-      }
-    ],
     rules: [
       {
-        test: /\.(ttf|eot|svg|gif)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "file-loader"
-        }
+        test: /\.scss?/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          {
+            loader: "css-loader" // translates CSS into CommonJS modules
+          },
+          {
+            loader: "postcss-loader", // Run post css actions
+            options: {
+              plugins: function() {
+                // post css plugins, can be exported to postcss.config.js
+                return [require("autoprefixer")];
+              }
+            }
+          },
+          {
+            loader: "sass-loader" // compiles Sass to CSS
+          }
+        ]
       },
       {
-        test: /\.scss$/,
-        use: extractSass.extract({
-          use: [
-            {
-              loader: "css-loader",
-              options: {
-                minimize: true,
-              }
-            },
-            {
-              loader: "sass-loader"
-            }
-          ],
-          fallback: "style-loader"
-        })
+        test: /\.(woff(2)?|ttf|eot|svg|gif)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: "url-loader"
+          }
+        ]
       }
-    ],
+    ]
   },
-  plugins:[
+  plugins: [
     new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery'
+      $: "jquery",
+      jQuery: "jquery"
     }),
-    extractSass,
-    uglifyJs
+    new MiniCssExtractPlugin({
+      filename: "../css/[name].css",
+      chunkFilename: "[id].css"
+    })
   ]
-}
+};
